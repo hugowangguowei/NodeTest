@@ -4,11 +4,39 @@
   "domain_scope": "cross-domain",
   "documents": [],
   "document_slices": [],
-  "entities": [],
+  "entities": [
+    {
+      "id": "entity-001",
+      "name": "事项",
+      "entity_type": "business_object",
+      "aliases": [],
+      "description": "可被处理的业务对象",
+      "attributes": {},
+      "source_refs": [],
+      "uncertainties": []
+    }
+  ],
   "behaviors": [],
   "events": [],
   "relationships": [],
-  "business_flows": [],
+  "business_flows": [
+    {
+      "id": "business-flow-001",
+      "name": "事项处理流程",
+      "flow_type": "approval_flow",
+      "goal": "完成事项处理",
+      "node_refs": [],
+      "entry_rule_refs": [],
+      "exit_rule_refs": [],
+      "entity_refs": [
+        "entity-001"
+      ],
+      "event_refs": [],
+      "rule_refs": [],
+      "source_refs": [],
+      "uncertainties": []
+    }
+  ],
   "rules": [],
   "source_registry": [],
   "uncertainties": [],
