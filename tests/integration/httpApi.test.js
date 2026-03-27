@@ -25,3 +25,9 @@ test('POST /api/scenarios/compose returns a scenario payload', async () => {
   assert.equal(response.statusCode, 200);
   assert.equal(response.body.scenario_id, 'scenario-001');
 });
+
+test('app.js exports a start entrypoint', () => {
+  const appEntry = require('../../app');
+
+  assert.equal(typeof appEntry.start, 'function');
+});
