@@ -1,0 +1,69 @@
+{
+  "task_id": "task-board-proposal-001",
+  "spec_version": "2.0.0",
+  "extraction_scope": {
+    "target_layers": [
+      "document_slice",
+      "domain_graph",
+      "canonical_candidates"
+    ],
+    "focus_topics": [
+      "实体",
+      "行为",
+      "事件",
+      "关系",
+      "流程",
+      "规则"
+    ],
+    "language": "zh-CN"
+  },
+  "documents": [
+    {
+      "doc_id": "doc-001",
+      "title": "董事会议事规则（测试样本）",
+      "doc_type": "policy",
+      "version": "2024.01",
+      "effective_date": "2024-01-01",
+      "issuing_org": "董事会",
+      "source": "sample/board_rules.txt",
+      "content": "第一条 董事长负责召集和主持董事会会议。\n第二条 提交董事会审议的议案，应在会议召开前报送董事会秘书。\n第三条 董事会秘书负责发出会议通知，并将议案材料分发给全体董事。\n第四条 董事应出席会议，并对议案进行审议。\n第五条 董事审议后，对议案进行表决。\n第六条 经表决通过的议案形成董事会决议。\n第七条 董事会秘书负责会议记录，并将决议和相关材料归档。"
+    },
+    {
+      "doc_id": "doc-002",
+      "title": "董事会议案材料要求（测试样本）",
+      "doc_type": "attachment_rule",
+      "version": "2024.01",
+      "effective_date": "2024-01-01",
+      "issuing_org": "董事会办公室",
+      "source": "sample/board_materials.txt",
+      "content": "第一条 董事会议案应附议案正文、背景说明、相关附件。\n第二条 会议通知应与议案材料一并发送。\n第三条 会议结束后，应归档会议通知、议案材料、表决结果和董事会决议。"
+    }
+  ],
+  "organization_context": {
+    "organization_name": "示例上市公司",
+    "industry": "综合类",
+    "known_departments": [
+      "董事会",
+      "董事会办公室"
+    ],
+    "known_roles": [
+      "董事长",
+      "董事会秘书",
+      "董事"
+    ]
+  },
+  "glossary": [
+    {
+      "term": "议案",
+      "definition": "提交董事会审议并形成表决结果的事项对象"
+    },
+    {
+      "term": "董事会决议",
+      "definition": "议案经董事表决通过后形成的正式结果文件"
+    },
+    {
+      "term": "议案材料",
+      "definition": "支撑董事审议议案的正文、说明及附件集合"
+    }
+  ]
+}

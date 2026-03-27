@@ -1,0 +1,462 @@
+{
+  "sample_version": "1.0.0",
+  "sample_name": "董事会议案审批-实体行为事件关系样本",
+  "sample_purpose": "用于验证基础资料是否已经被整理为可直接支撑应用构建的人、事、行为、事件、关系、流程结构。",
+  "domain_scope": "董事会议案审批场景",
+  "source_documents": [
+    {
+      "doc_id": "doc-001",
+      "title": "董事会议事规则（节选）",
+      "content_summary": "董事长召集董事会会议，董事会秘书负责会议通知与材料分发，董事对议案进行审议与表决，形成决议后归档。"
+    }
+  ],
+  "entities": [
+    {
+      "id": "entity-001",
+      "name": "董事长",
+      "entity_type": "person_role",
+      "category": "人",
+      "description": "董事会会议召集人，拥有发起召开会议的职责。",
+      "attributes": {
+        "organization_level": "公司级",
+        "role_nature": "治理角色"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事长负责召集和主持董事会会议。"
+        }
+      ]
+    },
+    {
+      "id": "entity-002",
+      "name": "董事会秘书",
+      "entity_type": "person_role",
+      "category": "人",
+      "description": "负责会议通知、材料分发、会议记录和归档。",
+      "attributes": {
+        "organization_level": "公司级",
+        "role_nature": "执行支持角色"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事会秘书负责会议通知、材料整理和会议记录。"
+        }
+      ]
+    },
+    {
+      "id": "entity-003",
+      "name": "董事",
+      "entity_type": "person_role",
+      "category": "人",
+      "description": "参与会议审议和表决的治理角色。",
+      "attributes": {
+        "organization_level": "公司级",
+        "role_nature": "治理角色"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事应出席会议并对议案进行审议和表决。"
+        }
+      ]
+    },
+    {
+      "id": "entity-004",
+      "name": "董事会",
+      "entity_type": "organization_unit",
+      "category": "组织",
+      "description": "承担议案审议和决议形成的治理主体。",
+      "attributes": {
+        "organization_level": "公司级"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事会对提交议案进行审议并形成决议。"
+        }
+      ]
+    },
+    {
+      "id": "entity-005",
+      "name": "议案",
+      "entity_type": "business_object",
+      "category": "事",
+      "description": "提交董事会审议的事项对象。",
+      "attributes": {
+        "business_kind": "审批事项",
+        "state_candidates": ["草拟", "待受理", "待审议", "表决中", "已通过", "未通过", "已归档"]
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "提交董事会审议的议案应提前报送。"
+        }
+      ]
+    },
+    {
+      "id": "entity-006",
+      "name": "会议通知",
+      "entity_type": "document_object",
+      "category": "材料",
+      "description": "董事会秘书向董事发送的会议通知。",
+      "attributes": {
+        "business_kind": "通知材料"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事会秘书应在会议召开前发出会议通知。"
+        }
+      ]
+    },
+    {
+      "id": "entity-007",
+      "name": "议案材料",
+      "entity_type": "document_object",
+      "category": "材料",
+      "description": "支撑董事审议议案的相关附件和说明材料。",
+      "attributes": {
+        "business_kind": "审批材料"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "会议材料应随通知一并分发。"
+        }
+      ]
+    },
+    {
+      "id": "entity-008",
+      "name": "董事会决议",
+      "entity_type": "business_object",
+      "category": "结果",
+      "description": "议案经表决后形成的正式决议结果。",
+      "attributes": {
+        "business_kind": "决议结果"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "经表决通过的议案形成董事会决议。"
+        }
+      ]
+    }
+  ],
+  "behaviors": [
+    {
+      "id": "behavior-001",
+      "name": "召集会议",
+      "behavior_type": "action",
+      "actor_refs": ["entity-001"],
+      "target_refs": ["entity-004"],
+      "object_refs": ["entity-005"],
+      "description": "董事长基于待审议议案发起董事会会议。",
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事长负责召集和主持董事会会议。"
+        }
+      ]
+    },
+    {
+      "id": "behavior-002",
+      "name": "发送会议通知",
+      "behavior_type": "action",
+      "actor_refs": ["entity-002"],
+      "target_refs": ["entity-003"],
+      "object_refs": ["entity-006", "entity-007"],
+      "description": "董事会秘书向董事发送通知并分发材料。",
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事会秘书应在会议召开前发出会议通知，并分发会议材料。"
+        }
+      ]
+    },
+    {
+      "id": "behavior-003",
+      "name": "审议议案",
+      "behavior_type": "action",
+      "actor_refs": ["entity-003"],
+      "target_refs": ["entity-005"],
+      "object_refs": ["entity-007"],
+      "description": "董事基于议案材料对议案进行审议。",
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事应对议案内容进行审议。"
+        }
+      ]
+    },
+    {
+      "id": "behavior-004",
+      "name": "表决议案",
+      "behavior_type": "action",
+      "actor_refs": ["entity-003"],
+      "target_refs": ["entity-005"],
+      "object_refs": [],
+      "description": "董事对议案投票，形成通过或未通过结果。",
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事对议案进行表决。"
+        }
+      ]
+    },
+    {
+      "id": "behavior-005",
+      "name": "记录并归档决议",
+      "behavior_type": "action",
+      "actor_refs": ["entity-002"],
+      "target_refs": ["entity-008"],
+      "object_refs": ["entity-005"],
+      "description": "董事会秘书记录会议结果并归档决议。",
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事会秘书负责会议记录并将决议归档。"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "event-001",
+      "name": "议案提交事件",
+      "event_type": "business_event",
+      "trigger": "出现需董事会审议的事项",
+      "actor_refs": ["entity-001"],
+      "object_refs": ["entity-005"],
+      "related_behavior_refs": ["behavior-001"],
+      "state_change": {
+        "entity_ref": "entity-005",
+        "from": "草拟",
+        "to": "待受理"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "提交董事会审议的议案应提前报送。"
+        }
+      ]
+    },
+    {
+      "id": "event-002",
+      "name": "会议通知发送事件",
+      "event_type": "notification_event",
+      "trigger": "会议时间确定",
+      "actor_refs": ["entity-002"],
+      "object_refs": ["entity-006", "entity-007"],
+      "related_behavior_refs": ["behavior-002"],
+      "state_change": {
+        "entity_ref": "entity-005",
+        "from": "待受理",
+        "to": "待审议"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事会秘书应在会议召开前发出会议通知。"
+        }
+      ]
+    },
+    {
+      "id": "event-003",
+      "name": "董事审议事件",
+      "event_type": "review_event",
+      "trigger": "董事收到会议通知和议案材料",
+      "actor_refs": ["entity-003"],
+      "object_refs": ["entity-005", "entity-007"],
+      "related_behavior_refs": ["behavior-003"],
+      "state_change": {
+        "entity_ref": "entity-005",
+        "from": "待审议",
+        "to": "表决中"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事应出席会议并对议案进行审议。"
+        }
+      ]
+    },
+    {
+      "id": "event-004",
+      "name": "董事表决事件",
+      "event_type": "vote_event",
+      "trigger": "议案完成审议",
+      "actor_refs": ["entity-003"],
+      "object_refs": ["entity-005"],
+      "related_behavior_refs": ["behavior-004"],
+      "state_change": {
+        "entity_ref": "entity-005",
+        "from": "表决中",
+        "to": "已通过"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事对议案进行表决，经表决通过后形成决议。"
+        }
+      ]
+    },
+    {
+      "id": "event-005",
+      "name": "决议归档事件",
+      "event_type": "archive_event",
+      "trigger": "议案表决通过",
+      "actor_refs": ["entity-002"],
+      "object_refs": ["entity-008"],
+      "related_behavior_refs": ["behavior-005"],
+      "state_change": {
+        "entity_ref": "entity-005",
+        "from": "已通过",
+        "to": "已归档"
+      },
+      "source_refs": [
+        {
+          "doc_id": "doc-001",
+          "quote": "董事会秘书负责会议记录并将决议归档。"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation-001",
+      "relation_type": "initiates",
+      "from_ref": "entity-001",
+      "to_ref": "event-001",
+      "description": "董事长发起议案进入董事会流程。"
+    },
+    {
+      "id": "relation-002",
+      "relation_type": "notifies",
+      "from_ref": "entity-002",
+      "to_ref": "entity-003",
+      "description": "董事会秘书向董事发送会议通知和材料。"
+    },
+    {
+      "id": "relation-003",
+      "relation_type": "reviews",
+      "from_ref": "entity-003",
+      "to_ref": "entity-005",
+      "description": "董事审议议案。"
+    },
+    {
+      "id": "relation-004",
+      "relation_type": "votes_on",
+      "from_ref": "entity-003",
+      "to_ref": "entity-005",
+      "description": "董事对议案进行表决。"
+    },
+    {
+      "id": "relation-005",
+      "relation_type": "produces",
+      "from_ref": "event-004",
+      "to_ref": "entity-008",
+      "description": "表决通过后形成董事会决议。"
+    },
+    {
+      "id": "relation-006",
+      "relation_type": "archives",
+      "from_ref": "entity-002",
+      "to_ref": "entity-008",
+      "description": "董事会秘书归档董事会决议。"
+    },
+    {
+      "id": "relation-007",
+      "relation_type": "belongs_to",
+      "from_ref": "entity-001",
+      "to_ref": "entity-004",
+      "description": "董事长属于董事会治理体系。"
+    },
+    {
+      "id": "relation-008",
+      "relation_type": "belongs_to",
+      "from_ref": "entity-003",
+      "to_ref": "entity-004",
+      "description": "董事属于董事会治理体系。"
+    }
+  ],
+  "flows": [
+    {
+      "id": "flow-001",
+      "name": "董事会议案审批流",
+      "flow_type": "approval_flow",
+      "start_entity_ref": "entity-005",
+      "nodes": [
+        {
+          "node_id": "flow-node-001",
+          "node_name": "议案提交",
+          "actor_refs": ["entity-001"],
+          "behavior_ref": "behavior-001",
+          "event_ref": "event-001",
+          "next_node_ids": ["flow-node-002"]
+        },
+        {
+          "node_id": "flow-node-002",
+          "node_name": "通知与材料分发",
+          "actor_refs": ["entity-002"],
+          "behavior_ref": "behavior-002",
+          "event_ref": "event-002",
+          "next_node_ids": ["flow-node-003"]
+        },
+        {
+          "node_id": "flow-node-003",
+          "node_name": "董事审议",
+          "actor_refs": ["entity-003"],
+          "behavior_ref": "behavior-003",
+          "event_ref": "event-003",
+          "next_node_ids": ["flow-node-004"]
+        },
+        {
+          "node_id": "flow-node-004",
+          "node_name": "董事表决",
+          "actor_refs": ["entity-003"],
+          "behavior_ref": "behavior-004",
+          "event_ref": "event-004",
+          "next_node_ids": ["flow-node-005"]
+        },
+        {
+          "node_id": "flow-node-005",
+          "node_name": "决议归档",
+          "actor_refs": ["entity-002"],
+          "behavior_ref": "behavior-005",
+          "event_ref": "event-005",
+          "next_node_ids": []
+        }
+      ]
+    }
+  ],
+  "app_building_hints": {
+    "core_master_data": ["董事长", "董事会秘书", "董事", "董事会"],
+    "core_business_objects": ["议案", "会议通知", "议案材料", "董事会决议"],
+    "core_actions": ["召集会议", "发送会议通知", "审议议案", "表决议案", "记录并归档决议"],
+    "core_events": ["议案提交事件", "会议通知发送事件", "董事审议事件", "董事表决事件", "决议归档事件"],
+    "ui_candidates": [
+      "议案列表页",
+      "议案详情页",
+      "会议通知发送页",
+      "董事审议页",
+      "董事表决页",
+      "决议归档页"
+    ],
+    "permission_candidates": [
+      {
+        "role": "董事长",
+        "permissions": ["发起议案", "召集会议"]
+      },
+      {
+        "role": "董事会秘书",
+        "permissions": ["发送通知", "分发材料", "记录会议", "归档决议"]
+      },
+      {
+        "role": "董事",
+        "permissions": ["查看议案", "审议议案", "表决议案"]
+      }
+    ]
+  }
+}
