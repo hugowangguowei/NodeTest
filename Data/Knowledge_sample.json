@@ -1,0 +1,1175 @@
+{
+  "spec_version": "1.0.0",
+  "task_id": "task-sample-major-contract-001",
+  "documents": [
+    {
+      "doc_id": "doc-001",
+      "title": "重大合同审批管理办法",
+      "doc_type": "policy",
+      "version": "2024-A",
+      "effective_date": "2024-03-01",
+      "issuing_org": "总经理办公会",
+      "source": "uploaded-file/重大合同审批管理办法.docx",
+      "language": "zh-CN"
+    },
+    {
+      "doc_id": "doc-002",
+      "title": "重大合同审批材料清单",
+      "doc_type": "attachment_rule",
+      "version": "1.0",
+      "effective_date": "2024-03-01",
+      "issuing_org": "法务部",
+      "source": "uploaded-file/重大合同审批材料清单.docx",
+      "language": "zh-CN"
+    }
+  ],
+  "document_slices": [
+    {
+      "slice_id": "slice-001",
+      "doc_id": "doc-001",
+      "slice_type": "clause",
+      "section_path": ["第二章 审批职责", "第四条"],
+      "title": "法务部职责",
+      "text": "法务部负责对重大合同进行合规审查。",
+      "keywords": ["法务部", "重大合同", "合规审查"],
+      "normalized_subjects": ["法务部"],
+      "normalized_actions": ["合规审查"],
+      "normalized_objects": ["重大合同"],
+      "preconditions": [],
+      "time_constraints": [],
+      "attachment_refs": [],
+      "source_order": 1
+    },
+    {
+      "slice_id": "slice-002",
+      "doc_id": "doc-001",
+      "slice_type": "condition",
+      "section_path": ["第二章 审批范围", "第五条"],
+      "title": "重大合同认定标准",
+      "text": "单笔合同金额达到或超过500万元的，纳入重大合同审批范围。",
+      "keywords": ["合同金额", "500万元", "审批范围"],
+      "normalized_subjects": [],
+      "normalized_actions": ["纳入"],
+      "normalized_objects": ["重大合同审批范围"],
+      "preconditions": ["单笔合同金额达到或超过500万元"],
+      "time_constraints": [],
+      "attachment_refs": [],
+      "source_order": 2
+    },
+    {
+      "slice_id": "slice-003",
+      "doc_id": "doc-001",
+      "slice_type": "step",
+      "section_path": ["第三章 审批流程", "第六条"],
+      "title": "业务部门发起申请",
+      "text": "业务部门应提交合同审批申请，并附合同文本、立项申请单、风险评估表。",
+      "keywords": ["业务部门", "提交", "合同审批申请", "合同文本", "立项申请单", "风险评估表"],
+      "normalized_subjects": ["业务部门"],
+      "normalized_actions": ["提交"],
+      "normalized_objects": ["合同审批申请"],
+      "preconditions": [],
+      "time_constraints": [],
+      "attachment_refs": ["entity-002", "entity-003", "entity-004"],
+      "source_order": 3
+    },
+    {
+      "slice_id": "slice-004",
+      "doc_id": "doc-001",
+      "slice_type": "clause",
+      "section_path": ["第三章 审批流程", "第七条"],
+      "title": "法务审查时限",
+      "text": "法务部应在收到完整材料后2个工作日内完成审查。",
+      "keywords": ["法务部", "完整材料", "2个工作日", "审查"],
+      "normalized_subjects": ["法务部"],
+      "normalized_actions": ["完成审查"],
+      "normalized_objects": ["重大合同审批材料"],
+      "preconditions": ["收到完整材料"],
+      "time_constraints": ["2个工作日内"],
+      "attachment_refs": [],
+      "source_order": 4
+    },
+    {
+      "slice_id": "slice-005",
+      "doc_id": "doc-001",
+      "slice_type": "step",
+      "section_path": ["第三章 审批流程", "第八条"],
+      "title": "财务部审核",
+      "text": "财务部负责审核资金安排和预算匹配情况。",
+      "keywords": ["财务部", "审核", "资金安排", "预算匹配"],
+      "normalized_subjects": ["财务部"],
+      "normalized_actions": ["审核"],
+      "normalized_objects": ["资金安排", "预算匹配情况"],
+      "preconditions": ["法务审查完成"],
+      "time_constraints": [],
+      "attachment_refs": ["entity-005"],
+      "source_order": 5
+    },
+    {
+      "slice_id": "slice-006",
+      "doc_id": "doc-001",
+      "slice_type": "clause",
+      "section_path": ["第三章 审批权限", "第九条"],
+      "title": "最终审批权限",
+      "text": "总经理对重大合同拥有最终审批权。",
+      "keywords": ["总经理", "重大合同", "最终审批权"],
+      "normalized_subjects": ["总经理"],
+      "normalized_actions": ["审批"],
+      "normalized_objects": ["重大合同"],
+      "preconditions": ["财务审核完成"],
+      "time_constraints": [],
+      "attachment_refs": [],
+      "source_order": 6
+    },
+    {
+      "slice_id": "slice-007",
+      "doc_id": "doc-001",
+      "slice_type": "step",
+      "section_path": ["第三章 审批归档", "第十条"],
+      "title": "归档要求",
+      "text": "审批完成后，业务部门应将审批单和正式合同归档。",
+      "keywords": ["审批完成", "业务部门", "审批单", "正式合同", "归档"],
+      "normalized_subjects": ["业务部门"],
+      "normalized_actions": ["归档"],
+      "normalized_objects": ["审批单", "正式合同"],
+      "preconditions": ["审批完成"],
+      "time_constraints": [],
+      "attachment_refs": ["entity-006", "entity-007"],
+      "source_order": 7
+    },
+    {
+      "slice_id": "slice-008",
+      "doc_id": "doc-002",
+      "slice_type": "attachment_ref",
+      "section_path": ["第一条"],
+      "title": "申请材料清单",
+      "text": "申请重大合同审批时，应提供合同文本、立项申请单、风险评估表、预算说明。",
+      "keywords": ["重大合同审批", "合同文本", "立项申请单", "风险评估表", "预算说明"],
+      "normalized_subjects": ["申请人"],
+      "normalized_actions": ["提供"],
+      "normalized_objects": ["合同文本", "立项申请单", "风险评估表", "预算说明"],
+      "preconditions": ["申请重大合同审批"],
+      "time_constraints": [],
+      "attachment_refs": ["entity-002", "entity-003", "entity-004", "entity-005"],
+      "source_order": 8
+    }
+  ],
+  "knowledge_spec": {
+    "clauses": [
+      {
+        "id": "clause-001",
+        "name": "法务部合规审查条款",
+        "clause_no": "第四条",
+        "clause_type": "responsibility",
+        "text": "法务部负责对重大合同进行合规审查。",
+        "section_path": ["第二章 审批职责", "第四条"],
+        "subject_refs": ["role-002"],
+        "object_refs": ["entity-001"],
+        "event_refs": ["event-002"],
+        "rule_refs": [],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-001",
+            "quote": "法务部负责对重大合同进行合规审查。"
+          }
+        ]
+      },
+      {
+        "id": "clause-002",
+        "name": "重大合同认定条款",
+        "clause_no": "第五条",
+        "clause_type": "restriction",
+        "text": "单笔合同金额达到或超过500万元的，纳入重大合同审批范围。",
+        "section_path": ["第二章 审批范围", "第五条"],
+        "subject_refs": [],
+        "object_refs": ["entity-001"],
+        "event_refs": ["event-001"],
+        "rule_refs": ["rule-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-002",
+            "quote": "单笔合同金额达到或超过500万元的，纳入重大合同审批范围。"
+          }
+        ]
+      },
+      {
+        "id": "clause-003",
+        "name": "业务部门提交申请条款",
+        "clause_no": "第六条",
+        "clause_type": "process",
+        "text": "业务部门应提交合同审批申请，并附合同文本、立项申请单、风险评估表。",
+        "section_path": ["第三章 审批流程", "第六条"],
+        "subject_refs": ["role-001"],
+        "object_refs": ["entity-001", "entity-002", "entity-003", "entity-004"],
+        "event_refs": ["event-001"],
+        "rule_refs": ["rule-002"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "业务部门应提交合同审批申请，并附合同文本、立项申请单、风险评估表。"
+          }
+        ]
+      },
+      {
+        "id": "clause-004",
+        "name": "法务审查时限条款",
+        "clause_no": "第七条",
+        "clause_type": "timelimit",
+        "text": "法务部应在收到完整材料后2个工作日内完成审查。",
+        "section_path": ["第三章 审批流程", "第七条"],
+        "subject_refs": ["role-002"],
+        "object_refs": ["entity-001"],
+        "event_refs": ["event-002"],
+        "rule_refs": ["rule-003"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-004",
+            "quote": "法务部应在收到完整材料后2个工作日内完成审查。"
+          }
+        ]
+      },
+      {
+        "id": "clause-005",
+        "name": "财务部审核条款",
+        "clause_no": "第八条",
+        "clause_type": "process",
+        "text": "财务部负责审核资金安排和预算匹配情况。",
+        "section_path": ["第三章 审批流程", "第八条"],
+        "subject_refs": ["role-003"],
+        "object_refs": ["entity-001", "entity-005"],
+        "event_refs": ["event-003"],
+        "rule_refs": [],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-005",
+            "quote": "财务部负责审核资金安排和预算匹配情况。"
+          }
+        ]
+      },
+      {
+        "id": "clause-006",
+        "name": "总经理最终审批条款",
+        "clause_no": "第九条",
+        "clause_type": "permission",
+        "text": "总经理对重大合同拥有最终审批权。",
+        "section_path": ["第三章 审批权限", "第九条"],
+        "subject_refs": ["role-004"],
+        "object_refs": ["entity-001"],
+        "event_refs": ["event-004"],
+        "rule_refs": [],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-006",
+            "quote": "总经理对重大合同拥有最终审批权。"
+          }
+        ]
+      },
+      {
+        "id": "clause-007",
+        "name": "审批归档条款",
+        "clause_no": "第十条",
+        "clause_type": "process",
+        "text": "审批完成后，业务部门应将审批单和正式合同归档。",
+        "section_path": ["第三章 审批归档", "第十条"],
+        "subject_refs": ["role-001"],
+        "object_refs": ["entity-006", "entity-007"],
+        "event_refs": ["event-005"],
+        "rule_refs": [],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-007",
+            "quote": "审批完成后，业务部门应将审批单和正式合同归档。"
+          }
+        ]
+      },
+      {
+        "id": "clause-008",
+        "name": "重大合同申请材料条款",
+        "clause_no": "第一条",
+        "clause_type": "material_requirement",
+        "text": "申请重大合同审批时，应提供合同文本、立项申请单、风险评估表、预算说明。",
+        "section_path": ["第一条"],
+        "subject_refs": ["role-001"],
+        "object_refs": ["entity-002", "entity-003", "entity-004", "entity-005"],
+        "event_refs": ["event-001"],
+        "rule_refs": ["rule-002"],
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "申请重大合同审批时，应提供合同文本、立项申请单、风险评估表、预算说明。"
+          }
+        ]
+      }
+    ],
+    "entities": [
+      {
+        "id": "entity-001",
+        "name": "重大合同审批事项",
+        "entity_type": "item",
+        "description": "满足重大合同认定标准后进入审批流程的事项对象。",
+        "attributes": [
+          {
+            "name": "合同金额",
+            "value_type": "number"
+          },
+          {
+            "name": "审批状态",
+            "value_type": "string"
+          }
+        ],
+        "state_candidates": ["待发起", "法务审查中", "财务审核中", "待总经理审批", "已批准", "已归档"],
+        "owner_role_refs": ["role-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-002",
+            "quote": "纳入重大合同审批范围。"
+          }
+        ]
+      },
+      {
+        "id": "entity-002",
+        "name": "合同文本",
+        "entity_type": "attachment",
+        "description": "发起重大合同审批时必须提交的合同正文材料。",
+        "attributes": [],
+        "state_candidates": [],
+        "owner_role_refs": ["role-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "并附合同文本"
+          }
+        ]
+      },
+      {
+        "id": "entity-003",
+        "name": "立项申请单",
+        "entity_type": "form",
+        "description": "说明合同立项背景与业务依据的申请表单。",
+        "attributes": [],
+        "state_candidates": [],
+        "owner_role_refs": ["role-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "立项申请单"
+          }
+        ]
+      },
+      {
+        "id": "entity-004",
+        "name": "风险评估表",
+        "entity_type": "form",
+        "description": "用于识别合同风险并形成评估结论的材料。",
+        "attributes": [],
+        "state_candidates": [],
+        "owner_role_refs": ["role-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "风险评估表"
+          }
+        ]
+      },
+      {
+        "id": "entity-005",
+        "name": "预算说明",
+        "entity_type": "attachment",
+        "description": "用于支撑资金安排和预算匹配审核的材料。",
+        "attributes": [],
+        "state_candidates": [],
+        "owner_role_refs": ["role-001", "role-003"],
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "预算说明"
+          }
+        ]
+      },
+      {
+        "id": "entity-006",
+        "name": "审批单",
+        "entity_type": "form",
+        "description": "记录审批过程与结果的归档表单。",
+        "attributes": [],
+        "state_candidates": [],
+        "owner_role_refs": ["role-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-007",
+            "quote": "审批单"
+          }
+        ]
+      },
+      {
+        "id": "entity-007",
+        "name": "正式合同",
+        "entity_type": "attachment",
+        "description": "完成审批后签署并归档的正式合同文本。",
+        "attributes": [],
+        "state_candidates": [],
+        "owner_role_refs": ["role-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-007",
+            "quote": "正式合同"
+          }
+        ]
+      }
+    ],
+    "roles": [
+      {
+        "id": "role-001",
+        "name": "业务部门",
+        "role_type": "execution_role",
+        "organization_scope": "部门级",
+        "responsibility_summary": "发起重大合同审批申请并负责归档。",
+        "parent_role_ref": null,
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "业务部门应提交合同审批申请。"
+          },
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-007",
+            "quote": "业务部门应将审批单和正式合同归档。"
+          }
+        ]
+      },
+      {
+        "id": "role-002",
+        "name": "法务部",
+        "role_type": "organization_role",
+        "organization_scope": "部门级",
+        "responsibility_summary": "负责重大合同合规审查并遵守审查时限。",
+        "parent_role_ref": null,
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-001",
+            "quote": "法务部负责对重大合同进行合规审查。"
+          },
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-004",
+            "quote": "法务部应在收到完整材料后2个工作日内完成审查。"
+          }
+        ]
+      },
+      {
+        "id": "role-003",
+        "name": "财务部",
+        "role_type": "organization_role",
+        "organization_scope": "部门级",
+        "responsibility_summary": "负责审核资金安排和预算匹配情况。",
+        "parent_role_ref": null,
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-005",
+            "quote": "财务部负责审核资金安排和预算匹配情况。"
+          }
+        ]
+      },
+      {
+        "id": "role-004",
+        "name": "总经理",
+        "role_type": "approval_role",
+        "organization_scope": "公司级",
+        "responsibility_summary": "对重大合同拥有最终审批权。",
+        "parent_role_ref": null,
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-006",
+            "quote": "总经理对重大合同拥有最终审批权。"
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "id": "event-001",
+        "name": "发起重大合同审批申请",
+        "event_type": "submit",
+        "subject_refs": ["role-001"],
+        "object_refs": ["entity-001", "entity-002", "entity-003", "entity-004", "entity-005"],
+        "preconditions": ["单笔合同金额达到重大合同标准"],
+        "outputs": ["形成待审查的重大合同审批事项"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "业务部门应提交合同审批申请。"
+          },
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "申请重大合同审批时，应提供合同文本、立项申请单、风险评估表、预算说明。"
+          }
+        ]
+      },
+      {
+        "id": "event-002",
+        "name": "法务合规审查重大合同",
+        "event_type": "review",
+        "subject_refs": ["role-002"],
+        "object_refs": ["entity-001"],
+        "preconditions": ["已收到完整审批材料"],
+        "outputs": ["形成法务审查结论"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-001",
+            "quote": "法务部负责对重大合同进行合规审查。"
+          },
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-004",
+            "quote": "法务部应在收到完整材料后2个工作日内完成审查。"
+          }
+        ]
+      },
+      {
+        "id": "event-003",
+        "name": "财务审核资金安排与预算匹配",
+        "event_type": "review",
+        "subject_refs": ["role-003"],
+        "object_refs": ["entity-001", "entity-005"],
+        "preconditions": ["法务审查完成"],
+        "outputs": ["形成财务审核意见"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-005",
+            "quote": "财务部负责审核资金安排和预算匹配情况。"
+          }
+        ]
+      },
+      {
+        "id": "event-004",
+        "name": "总经理审批重大合同",
+        "event_type": "approval_action",
+        "subject_refs": ["role-004"],
+        "object_refs": ["entity-001"],
+        "preconditions": ["财务审核完成"],
+        "outputs": ["形成最终审批结果"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-006",
+            "quote": "总经理对重大合同拥有最终审批权。"
+          }
+        ]
+      },
+      {
+        "id": "event-005",
+        "name": "归档重大合同审批材料",
+        "event_type": "archive",
+        "subject_refs": ["role-001"],
+        "object_refs": ["entity-006", "entity-007"],
+        "preconditions": ["审批完成"],
+        "outputs": ["形成归档完成状态"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-007",
+            "quote": "审批完成后，业务部门应将审批单和正式合同归档。"
+          }
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rule-001",
+        "name": "重大合同金额触发规则",
+        "rule_type": "trigger_condition",
+        "expression": "单笔合同金额达到或超过500万元的，纳入重大合同审批范围。",
+        "subject_refs": [],
+        "object_refs": ["entity-001"],
+        "trigger_event_refs": ["event-001"],
+        "constraint_level": "must",
+        "condition_text": "合同金额 >= 5000000",
+        "time_limit": null,
+        "violation_result": "未纳入审批流程视为流程不合规。",
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-002",
+            "quote": "单笔合同金额达到或超过500万元的，纳入重大合同审批范围。"
+          }
+        ]
+      },
+      {
+        "id": "rule-002",
+        "name": "重大合同申请材料完整性规则",
+        "rule_type": "material_requirement",
+        "expression": "申请重大合同审批时，应提供合同文本、立项申请单、风险评估表、预算说明。",
+        "subject_refs": ["role-001"],
+        "object_refs": ["entity-002", "entity-003", "entity-004", "entity-005"],
+        "trigger_event_refs": ["event-001"],
+        "constraint_level": "must",
+        "condition_text": "发起重大合同审批时必须附齐必备材料",
+        "time_limit": null,
+        "violation_result": "材料不完整不得进入法务审查。",
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "应提供合同文本、立项申请单、风险评估表、预算说明。"
+          }
+        ]
+      },
+      {
+        "id": "rule-003",
+        "name": "法务审查时限规则",
+        "rule_type": "time_limit",
+        "expression": "法务部应在收到完整材料后2个工作日内完成审查。",
+        "subject_refs": ["role-002"],
+        "object_refs": ["entity-001"],
+        "trigger_event_refs": ["event-002"],
+        "constraint_level": "must",
+        "condition_text": "收到完整材料后开始计时",
+        "time_limit": {
+          "relative_to": "收到完整材料时间",
+          "offset": 2,
+          "unit": "working_day"
+        },
+        "violation_result": "超时应记录审查异常并纳入审计。",
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-004",
+            "quote": "法务部应在收到完整材料后2个工作日内完成审查。"
+          }
+        ]
+      }
+    ],
+    "processes": [
+      {
+        "id": "process-001",
+        "name": "重大合同审批流程",
+        "process_type": "approval_process",
+        "start_condition": "单笔合同金额达到或超过500万元且申请材料齐全",
+        "end_condition": "审批单和正式合同完成归档",
+        "participant_role_refs": ["role-001", "role-002", "role-003", "role-004"],
+        "node_sequence": [
+          {
+            "node_id": "node-001",
+            "node_name": "业务部门提交申请",
+            "actor_role_refs": ["role-001"],
+            "event_ref": "event-001",
+            "next_node_ids": ["node-002"]
+          },
+          {
+            "node_id": "node-002",
+            "node_name": "法务部合规审查",
+            "actor_role_refs": ["role-002"],
+            "event_ref": "event-002",
+            "next_node_ids": ["node-003"]
+          },
+          {
+            "node_id": "node-003",
+            "node_name": "财务部审核",
+            "actor_role_refs": ["role-003"],
+            "event_ref": "event-003",
+            "next_node_ids": ["node-004"]
+          },
+          {
+            "node_id": "node-004",
+            "node_name": "总经理审批",
+            "actor_role_refs": ["role-004"],
+            "event_ref": "event-004",
+            "next_node_ids": ["node-005"]
+          },
+          {
+            "node_id": "node-005",
+            "node_name": "业务部门归档",
+            "actor_role_refs": ["role-001"],
+            "event_ref": "event-005",
+            "next_node_ids": []
+          }
+        ],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "业务部门应提交合同审批申请。"
+          },
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-004",
+            "quote": "法务部应在收到完整材料后2个工作日内完成审查。"
+          },
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-005",
+            "quote": "财务部负责审核资金安排和预算匹配情况。"
+          },
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-006",
+            "quote": "总经理对重大合同拥有最终审批权。"
+          },
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-007",
+            "quote": "审批完成后，业务部门应将审批单和正式合同归档。"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "id": "relation-001",
+        "relation_type": "initiates",
+        "from_ref": "role-001",
+        "to_ref": "event-001",
+        "description": "业务部门发起重大合同审批申请。",
+        "condition_text": "合同金额达到重大合同标准",
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "业务部门应提交合同审批申请。"
+          }
+        ]
+      },
+      {
+        "id": "relation-002",
+        "relation_type": "responsible_for",
+        "from_ref": "role-002",
+        "to_ref": "event-002",
+        "description": "法务部负责重大合同合规审查。",
+        "condition_text": null,
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-001",
+            "quote": "法务部负责对重大合同进行合规审查。"
+          }
+        ]
+      },
+      {
+        "id": "relation-003",
+        "relation_type": "responsible_for",
+        "from_ref": "role-003",
+        "to_ref": "event-003",
+        "description": "财务部负责审核资金安排和预算匹配情况。",
+        "condition_text": "法务审查完成后进入该环节",
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-005",
+            "quote": "财务部负责审核资金安排和预算匹配情况。"
+          }
+        ]
+      },
+      {
+        "id": "relation-004",
+        "relation_type": "approves",
+        "from_ref": "role-004",
+        "to_ref": "entity-001",
+        "description": "总经理对重大合同审批事项拥有最终审批权。",
+        "condition_text": "财务审核完成后进行最终审批",
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-006",
+            "quote": "总经理对重大合同拥有最终审批权。"
+          }
+        ]
+      },
+      {
+        "id": "relation-005",
+        "relation_type": "constrains",
+        "from_ref": "rule-001",
+        "to_ref": "process-001",
+        "description": "合同金额阈值规则约束重大合同审批流程是否启动。",
+        "condition_text": "合同金额达到或超过500万元",
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-002",
+            "quote": "纳入重大合同审批范围。"
+          }
+        ]
+      },
+      {
+        "id": "relation-006",
+        "relation_type": "uses_attachment",
+        "from_ref": "event-001",
+        "to_ref": "entity-002",
+        "description": "发起审批时需提交合同文本。",
+        "condition_text": null,
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "应提供合同文本。"
+          }
+        ]
+      },
+      {
+        "id": "relation-007",
+        "relation_type": "uses_attachment",
+        "from_ref": "event-001",
+        "to_ref": "entity-003",
+        "description": "发起审批时需提交立项申请单。",
+        "condition_text": null,
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "应提供立项申请单。"
+          }
+        ]
+      },
+      {
+        "id": "relation-008",
+        "relation_type": "uses_attachment",
+        "from_ref": "event-001",
+        "to_ref": "entity-004",
+        "description": "发起审批时需提交风险评估表。",
+        "condition_text": null,
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "应提供风险评估表。"
+          }
+        ]
+      },
+      {
+        "id": "relation-009",
+        "relation_type": "uses_attachment",
+        "from_ref": "event-001",
+        "to_ref": "entity-005",
+        "description": "发起审批时需提交预算说明。",
+        "condition_text": null,
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "应提供预算说明。"
+          }
+        ]
+      },
+      {
+        "id": "relation-010",
+        "relation_type": "outputs",
+        "from_ref": "event-005",
+        "to_ref": "entity-006",
+        "description": "归档事件输出审批单归档结果。",
+        "condition_text": "审批完成后执行归档",
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-007",
+            "quote": "应将审批单归档。"
+          }
+        ]
+      },
+      {
+        "id": "relation-011",
+        "relation_type": "outputs",
+        "from_ref": "event-005",
+        "to_ref": "entity-007",
+        "description": "归档事件输出正式合同归档结果。",
+        "condition_text": "审批完成后执行归档",
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-007",
+            "quote": "应将正式合同归档。"
+          }
+        ]
+      }
+    ]
+  },
+  "canonical_data_candidates": {
+    "items": [
+      {
+        "id": "item-001",
+        "name": "重大合同审批事项",
+        "source_entity_refs": ["entity-001"],
+        "category": "合同管理",
+        "state_model": ["待发起", "法务审查中", "财务审核中", "待总经理审批", "已批准", "已归档"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-002",
+            "quote": "纳入重大合同审批范围。"
+          }
+        ]
+      }
+    ],
+    "processes": [
+      {
+        "id": "canonical-process-001",
+        "name": "重大合同审批流程",
+        "source_process_refs": ["process-001"],
+        "category": "审批流程",
+        "participant_role_refs": ["role-001", "role-002", "role-003", "role-004"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "业务部门应提交合同审批申请。"
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "id": "canonical-event-001",
+        "name": "发起重大合同审批申请",
+        "source_event_refs": ["event-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "业务部门应提交合同审批申请。"
+          }
+        ]
+      },
+      {
+        "id": "canonical-event-002",
+        "name": "法务合规审查重大合同",
+        "source_event_refs": ["event-002"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-001",
+            "quote": "法务部负责对重大合同进行合规审查。"
+          }
+        ]
+      },
+      {
+        "id": "canonical-event-003",
+        "name": "财务审核资金安排与预算匹配",
+        "source_event_refs": ["event-003"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-005",
+            "quote": "财务部负责审核资金安排和预算匹配情况。"
+          }
+        ]
+      },
+      {
+        "id": "canonical-event-004",
+        "name": "总经理审批重大合同",
+        "source_event_refs": ["event-004"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-006",
+            "quote": "总经理对重大合同拥有最终审批权。"
+          }
+        ]
+      },
+      {
+        "id": "canonical-event-005",
+        "name": "归档重大合同审批材料",
+        "source_event_refs": ["event-005"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-007",
+            "quote": "业务部门应将审批单和正式合同归档。"
+          }
+        ]
+      }
+    ],
+    "roles": [
+      {
+        "id": "canonical-role-001",
+        "name": "业务部门",
+        "source_role_refs": ["role-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-003",
+            "quote": "业务部门应提交合同审批申请。"
+          }
+        ]
+      },
+      {
+        "id": "canonical-role-002",
+        "name": "法务部",
+        "source_role_refs": ["role-002"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-001",
+            "quote": "法务部负责对重大合同进行合规审查。"
+          }
+        ]
+      },
+      {
+        "id": "canonical-role-003",
+        "name": "财务部",
+        "source_role_refs": ["role-003"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-005",
+            "quote": "财务部负责审核资金安排和预算匹配情况。"
+          }
+        ]
+      },
+      {
+        "id": "canonical-role-004",
+        "name": "总经理",
+        "source_role_refs": ["role-004"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-006",
+            "quote": "总经理对重大合同拥有最终审批权。"
+          }
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "canonical-rule-001",
+        "name": "重大合同金额触发规则",
+        "source_rule_refs": ["rule-001"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-002",
+            "quote": "单笔合同金额达到或超过500万元的，纳入重大合同审批范围。"
+          }
+        ]
+      },
+      {
+        "id": "canonical-rule-002",
+        "name": "重大合同申请材料完整性规则",
+        "source_rule_refs": ["rule-002"],
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "应提供合同文本、立项申请单、风险评估表、预算说明。"
+          }
+        ]
+      },
+      {
+        "id": "canonical-rule-003",
+        "name": "法务审查时限规则",
+        "source_rule_refs": ["rule-003"],
+        "source_refs": [
+          {
+            "doc_id": "doc-001",
+            "slice_id": "slice-004",
+            "quote": "法务部应在收到完整材料后2个工作日内完成审查。"
+          }
+        ]
+      }
+    ],
+    "attachments": [
+      {
+        "id": "attachment-001",
+        "name": "合同文本",
+        "attachment_type": "required_material",
+        "related_item_refs": ["item-001"],
+        "requirement_rule_refs": ["rule-002"],
+        "source_entity_refs": ["entity-002"],
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "合同文本"
+          }
+        ]
+      },
+      {
+        "id": "attachment-002",
+        "name": "立项申请单",
+        "attachment_type": "required_material",
+        "related_item_refs": ["item-001"],
+        "requirement_rule_refs": ["rule-002"],
+        "source_entity_refs": ["entity-003"],
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "立项申请单"
+          }
+        ]
+      },
+      {
+        "id": "attachment-003",
+        "name": "风险评估表",
+        "attachment_type": "required_material",
+        "related_item_refs": ["item-001"],
+        "requirement_rule_refs": ["rule-002"],
+        "source_entity_refs": ["entity-004"],
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "风险评估表"
+          }
+        ]
+      },
+      {
+        "id": "attachment-004",
+        "name": "预算说明",
+        "attachment_type": "required_material",
+        "related_item_refs": ["item-001"],
+        "requirement_rule_refs": ["rule-002"],
+        "source_entity_refs": ["entity-005"],
+        "source_refs": [
+          {
+            "doc_id": "doc-002",
+            "slice_id": "slice-008",
+            "quote": "预算说明"
+          }
+        ]
+      }
+    ]
+  },
+  "uncertainties": [
+    {
+      "id": "uncertainty-001",
+      "category": "missing_information",
+      "level": "low",
+      "related_refs": ["event-003", "slice-005"],
+      "description": "原文说明财务部负责审核资金安排和预算匹配情况，但未明确审核完成时限。",
+      "recommended_action": "当前不生成财务审核时限规则，待制度补充后再完善。"
+    }
+  ],
+  "validation": {
+    "document_count": 2,
+    "slice_count": 8,
+    "knowledge_object_count": 39,
+    "canonical_candidate_count": 18,
+    "errors": [],
+    "warnings": [
+      {
+        "code": "MISSING_FINANCE_REVIEW_TIME_LIMIT",
+        "message": "财务审核时限未在原文中明确，已记录到 uncertainties。"
+      }
+    ]
+  }
+}
