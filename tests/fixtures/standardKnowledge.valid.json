@@ -1,0 +1,16 @@
+{
+  "standard_knowledge_version": "1.0.0",
+  "knowledge_id": "sk-001",
+  "domain_scope": "cross-domain",
+  "documents": [],
+  "document_slices": [],
+  "entities": [],
+  "behaviors": [],
+  "events": [],
+  "relationships": [],
+  "business_flows": [],
+  "rules": [],
+  "source_registry": [],
+  "uncertainties": [],
+  "validation": {}
+}

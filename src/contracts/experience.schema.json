@@ -1,0 +1,39 @@
+{
+  "$id": "experience",
+  "type": "object",
+  "required": [
+    "experience_version",
+    "experience_id",
+    "scenario_ref",
+    "experience_type",
+    "name",
+    "description",
+    "role_views",
+    "workspace_cards",
+    "quick_actions",
+    "flow_projections",
+    "relationship_projections",
+    "layout_preferences",
+    "interaction_preferences",
+    "uncertainties",
+    "validation"
+  ],
+  "properties": {
+    "experience_version": { "type": "string" },
+    "experience_id": { "type": "string" },
+    "scenario_ref": { "type": "string" },
+    "experience_type": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "role_views": { "type": "array" },
+    "workspace_cards": { "type": "array" },
+    "quick_actions": { "type": "array" },
+    "flow_projections": { "type": "array" },
+    "relationship_projections": { "type": "array" },
+    "layout_preferences": { "type": "object" },
+    "interaction_preferences": { "type": "object" },
+    "uncertainties": { "type": "array" },
+    "validation": { "type": "object" }
+  },
+  "additionalProperties": false
+}
