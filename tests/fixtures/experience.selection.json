@@ -1,0 +1,38 @@
+{
+  "experience_id": "experience-001",
+  "experience_type": "personal_workspace",
+  "name": "事项工作台",
+  "description": "围绕事项管理场景的个性化工作台",
+  "role_views": [],
+  "workspace_cards": [
+    {
+      "id": "card-001",
+      "name": "待处理事项",
+      "card_type": "task_list",
+      "source_refs": [],
+      "filters": {},
+      "display_preferences": {}
+    }
+  ],
+  "quick_actions": [],
+  "flow_projections": [
+    {
+      "id": "flow-projection-001",
+      "name": "事项流程透视",
+      "business_flow_ref": "business-flow-001",
+      "focus_node_refs": [],
+      "display_preferences": {}
+    }
+  ],
+  "relationship_projections": [
+    {
+      "id": "relationship-projection-001",
+      "name": "事项关系透视",
+      "relationship_view_ref": "relationship-view-001",
+      "focus_refs": [],
+      "display_preferences": {}
+    }
+  ],
+  "layout_preferences": {},
+  "interaction_preferences": {}
+}
