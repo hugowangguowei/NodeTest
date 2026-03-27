@@ -1,0 +1,9 @@
+'use strict';
+
+function registerRoutes(app) {
+  app.get('/health', (_req, res) => {
+    res.json({ status: 'ok' });
+  });
+}
+
+module.exports = { registerRoutes };
