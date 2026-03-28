@@ -23,17 +23,17 @@
 
           <div class="section-card">
             <h3>实体</h3>
-            <div class="placeholder-list" data-role="entity-list"></div>
+            <div class="option-list" data-role="entity-list"></div>
           </div>
 
           <div class="section-card">
             <h3>业务流程</h3>
-            <div class="placeholder-list" data-role="flow-list"></div>
+            <div class="option-list" data-role="flow-list"></div>
           </div>
 
           <div class="section-card">
             <h3>关系视角</h3>
-            <div class="placeholder-list" data-role="relationship-list"></div>
+            <div class="option-list" data-role="relationship-list"></div>
           </div>
         </section>
 
@@ -42,17 +42,39 @@
           <p class="panel-intro">当前阶段先用点击选择和固定模板完成组合，不做自由拖拽。</p>
 
           <div class="section-card">
-            <h3>默认场景摘要</h3>
+            <h3>场景基础信息</h3>
+            <div class="field-grid">
+              <label class="field">
+                <span>场景 ID</span>
+                <input type="text" data-role="scenario-id" />
+              </label>
+              <label class="field">
+                <span>场景名称</span>
+                <input type="text" data-role="scenario-name" />
+              </label>
+              <label class="field field-wide">
+                <span>场景目标</span>
+                <input type="text" data-role="scenario-goal" />
+              </label>
+              <label class="field field-wide">
+                <span>场景描述</span>
+                <textarea rows="3" data-role="scenario-description"></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <h3>当前组合摘要</h3>
             <div class="placeholder-list" data-role="selected-summary"></div>
           </div>
 
           <div class="section-card">
             <h3>操作</h3>
             <div class="placeholder-actions">
-              <span class="action-chip">生成场景</span>
-              <span class="action-chip">生成表达</span>
-              <span class="action-chip">记录构建流程</span>
-              <span class="action-chip">重置</span>
+              <button type="button" class="action-button" data-role="generate-scenario">生成场景</button>
+              <button type="button" class="action-button" data-role="generate-experience">生成表达</button>
+              <button type="button" class="action-button" data-role="record-workflow">记录构建流程</button>
+              <button type="button" class="action-button is-secondary" data-role="reset-builder">重置</button>
             </div>
           </div>
         </section>
@@ -62,12 +84,13 @@
           <p class="panel-intro">当前阶段直接显示结构化 JSON，优先验证链路而不是视觉美化。</p>
 
           <div class="output-tabs">
-            <span class="tab-chip is-active">Scenario</span>
-            <span class="tab-chip">Experience</span>
-            <span class="tab-chip">Build Workflow</span>
-            <span class="tab-chip">错误信息</span>
+            <button type="button" class="tab-chip is-active" data-role="tab" data-tab="scenario">Scenario</button>
+            <button type="button" class="tab-chip" data-role="tab" data-tab="experience">Experience</button>
+            <button type="button" class="tab-chip" data-role="tab" data-tab="workflow">Build Workflow</button>
+            <button type="button" class="tab-chip" data-role="tab" data-tab="error">错误信息</button>
           </div>
 
+          <div class="error-banner" data-role="error-banner" hidden></div>
           <div class="output-shell">
             <pre data-role="output-shell">正在加载固定样本...</pre>
           </div>
