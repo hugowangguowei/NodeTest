@@ -1,0 +1,25 @@
+{
+  "$id": "buildWorkflow",
+  "type": "object",
+  "required": [
+    "build_workflow_version",
+    "build_workflow_id",
+    "target_scenario_ref",
+    "target_experience_refs",
+    "steps",
+    "operation_log_refs",
+    "status",
+    "validation"
+  ],
+  "properties": {
+    "build_workflow_version": { "type": "string" },
+    "build_workflow_id": { "type": "string" },
+    "target_scenario_ref": { "type": "string" },
+    "target_experience_refs": { "type": "array" },
+    "steps": { "type": "array" },
+    "operation_log_refs": { "type": "array" },
+    "status": { "type": "string" },
+    "validation": { "type": "object" }
+  },
+  "additionalProperties": false
+}

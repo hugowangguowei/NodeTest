@@ -1,3 +1,9 @@
 'use strict';
 
-console.log('Hello world');
+const { start } = require('./src/index');
+
+if (require.main === module) {
+  start();
+}
+
+module.exports = { start };

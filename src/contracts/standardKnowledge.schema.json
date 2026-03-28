@@ -1,0 +1,37 @@
+{
+  "$id": "standardKnowledge",
+  "type": "object",
+  "required": [
+    "standard_knowledge_version",
+    "knowledge_id",
+    "domain_scope",
+    "documents",
+    "document_slices",
+    "entities",
+    "behaviors",
+    "events",
+    "relationships",
+    "business_flows",
+    "rules",
+    "source_registry",
+    "uncertainties",
+    "validation"
+  ],
+  "properties": {
+    "standard_knowledge_version": { "type": "string" },
+    "knowledge_id": { "type": "string" },
+    "domain_scope": { "type": "string" },
+    "documents": { "type": "array" },
+    "document_slices": { "type": "array" },
+    "entities": { "type": "array" },
+    "behaviors": { "type": "array" },
+    "events": { "type": "array" },
+    "relationships": { "type": "array" },
+    "business_flows": { "type": "array" },
+    "rules": { "type": "array" },
+    "source_registry": { "type": "array" },
+    "uncertainties": { "type": "array" },
+    "validation": { "type": "object" }
+  },
+  "additionalProperties": false
+}
