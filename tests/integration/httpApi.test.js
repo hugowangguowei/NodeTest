@@ -14,6 +14,9 @@ test('GET / returns the scenario builder shell', async () => {
 
   assert.equal(response.statusCode, 200);
   assert.match(response.text, /场景构建台/);
+  assert.match(response.text, /知识要素区/);
+  assert.match(response.text, /场景组合区/);
+  assert.match(response.text, /输出区/);
 });
 
 test('GET /health returns ok payload', async () => {

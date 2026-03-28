@@ -4,11 +4,77 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>场景构建台</title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <main>
-      <h1>场景构建台</h1>
-      <p>固定样本驱动的交互式场景构建原型。</p>
-    </main>
+    <div class="page">
+      <header class="hero">
+        <h1>场景构建台</h1>
+        <p>
+          固定样本驱动的交互式构建原型。左侧选择知识要素，中间组织场景，右侧直接查看
+          Scenario、Experience、Build Workflow 的结构化输出。
+        </p>
+      </header>
+
+      <main class="layout">
+        <section class="panel">
+          <h2>知识要素区</h2>
+          <p class="panel-intro">当前阶段先使用固定样本，展示实体、业务流程和关系视角。</p>
+
+          <div class="section-card">
+            <h3>实体</h3>
+            <div class="placeholder-list" data-role="entity-list"></div>
+          </div>
+
+          <div class="section-card">
+            <h3>业务流程</h3>
+            <div class="placeholder-list" data-role="flow-list"></div>
+          </div>
+
+          <div class="section-card">
+            <h3>关系视角</h3>
+            <div class="placeholder-list" data-role="relationship-list"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>场景组合区</h2>
+          <p class="panel-intro">当前阶段先用点击选择和固定模板完成组合，不做自由拖拽。</p>
+
+          <div class="section-card">
+            <h3>默认场景摘要</h3>
+            <div class="placeholder-list" data-role="selected-summary"></div>
+          </div>
+
+          <div class="section-card">
+            <h3>操作</h3>
+            <div class="placeholder-actions">
+              <span class="action-chip">生成场景</span>
+              <span class="action-chip">生成表达</span>
+              <span class="action-chip">记录构建流程</span>
+              <span class="action-chip">重置</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>输出区</h2>
+          <p class="panel-intro">当前阶段直接显示结构化 JSON，优先验证链路而不是视觉美化。</p>
+
+          <div class="output-tabs">
+            <span class="tab-chip is-active">Scenario</span>
+            <span class="tab-chip">Experience</span>
+            <span class="tab-chip">Build Workflow</span>
+            <span class="tab-chip">错误信息</span>
+          </div>
+
+          <div class="output-shell">
+            <pre data-role="output-shell">正在加载固定样本...</pre>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
   </body>
 </html>
