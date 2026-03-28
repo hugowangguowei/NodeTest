@@ -8,12 +8,30 @@ const knowledge = require('../fixtures/standardKnowledge.valid.json');
 const scenarioSelection = require('../fixtures/scenario.selection.json');
 const { createApp } = require('../../src/server/createApp');
 
+test('GET / returns the scenario builder shell', async () => {
+  const app = createApp();
+  const response = await request(app).get('/');
+
+  assert.equal(response.statusCode, 200);
+  assert.match(response.text, /场景构建台/);
+});
+
 test('GET /health returns ok payload', async () => {
   const app = createApp();
   const response = await request(app).get('/health');
 
   assert.equal(response.statusCode, 200);
   assert.deepEqual(response.body, { status: 'ok' });
+});
+
+test('GET /api/workbench/bootstrap returns fixed sample data', async () => {
+  const app = createApp();
+  const response = await request(app).get('/api/workbench/bootstrap');
+
+  assert.equal(response.statusCode, 200);
+  assert.equal(response.body.knowledge.knowledge_id, 'sk-001');
+  assert.equal(response.body.scenarioDraft.scenario_id, 'scenario-001');
+  assert.equal(response.body.experienceTemplate.experience_id, 'experience-001');
 });
 
 test('POST /api/scenarios/compose returns a scenario payload', async () => {

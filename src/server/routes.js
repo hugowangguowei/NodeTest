@@ -1,11 +1,16 @@
 'use strict';
 
+const { getWorkbenchBootstrap } = require('../sampleData/workbenchBootstrap');
 const { validators } = require('../validation/compileValidators');
 const { composeScenario } = require('../domain/composeScenario');
 const { createExperience } = require('../domain/createExperience');
 const { createBuildWorkflow } = require('../domain/createBuildWorkflow');
 
 function registerRoutes(app) {
+  app.get('/api/workbench/bootstrap', (_req, res) => {
+    res.json(getWorkbenchBootstrap());
+  });
+
   app.get('/health', (_req, res) => {
     res.json({ status: 'ok' });
   });
