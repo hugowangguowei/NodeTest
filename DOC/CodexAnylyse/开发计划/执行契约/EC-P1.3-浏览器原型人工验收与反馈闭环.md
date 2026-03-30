@@ -1,0 +1,82 @@
+# EC-P1.3 浏览器原型人工验收与反馈闭环
+
+更新时间：2026-03-29
+
+目标：
+
+- 以浏览器原型为主入口完成当前 P1.3 切片的人类可见验收闭环
+- 在用户给出人工验收反馈后，继续按反馈修正原型而不偏离总设计稿
+
+Owner：
+
+- 开发：Codex
+- 人工验收：用户
+
+Write Scope：
+
+- `public/`
+- `src/sampleData/`
+- `tests/integration/`
+- `DOC/CodexAnylyse/验收清单/`
+- `DOC/CodexAnylyse/验收记录/`
+- `DOC/CodexAnylyse/验收结论/`
+- `DOC/CodexAnylyse/自测报告/`
+- `DOC/CodexAnylyse/会话交接/`
+
+Depends On：
+
+- `P1.1 文档与策略面稳定`
+- `P1.2 平台定义面稳定`
+- 本地服务可正常启动
+
+验收入口：
+
+- 主入口：
+  - 浏览器地址：`http://127.0.0.1:3000/`
+- 辅助入口：
+  - [00-平台总设计稿](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/设计稿/00-平台总设计稿.md)
+  - [2026-03-28-130410-人工验收清单](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/验收清单/2026-03-28-130410-人工验收清单.md)
+
+验收标准：
+
+- 浏览器原型可正常打开，不出现 `Cannot GET /`
+- 页面语义与当前产品理解一致：
+  - `行业/领域知识仓库`
+  - `软件工厂`
+  - `定制软件定义区`
+- 主要交互链路可见、可点、可得到结构化结果
+- 用户能基于页面而非命令行完成主要观察与反馈
+
+输出物：
+
+- 浏览器原型修订
+- 新的或更新后的人工验收清单
+- 人工验收记录
+- 验收结论记录
+- 自测报告
+- 会话交接
+
+证据链接：
+
+- 计划文档：
+  - [02-WBS-L1-P1-平台定义与原型收敛](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/02-WBS-L1-P1-平台定义与原型收敛.md)
+- 设计文档：
+  - [00-平台总设计稿](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/设计稿/00-平台总设计稿.md)
+- 自测报告：
+  - [2026-03-28-130410-软件工厂语义升级自测记录](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/自测报告/2026-03-28-130410-软件工厂语义升级自测记录.md)
+- 验收清单：
+  - [2026-03-28-130410-人工验收清单](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/验收清单/2026-03-28-130410-人工验收清单.md)
+- 验收记录：
+  - [2026-03-29-005853-人工验收记录](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/验收记录/2026-03-29-005853-人工验收记录.md)
+- 验收结论：
+  - [2026-03-29-005853-验收结论记录](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/验收结论/2026-03-29-005853-验收结论记录.md)
+- 交接记录：
+  - [2026-03-28-130410-软件工厂语义升级交接记录](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/会话交接/2026-03-28-130410-软件工厂语义升级交接记录.md)
+
+当前状态：
+
+- `待人工验收`
+
+上级节点：
+
+- `P1.3 浏览器原型维持可验`

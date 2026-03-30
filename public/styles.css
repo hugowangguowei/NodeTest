@@ -96,7 +96,8 @@ body {
 
 .placeholder-list,
 .placeholder-actions,
-.output-tabs {
+.output-tabs,
+.stacked-list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -119,6 +120,10 @@ body {
 
 .option-item input {
   margin-top: 2px;
+}
+
+.option-item.is-static {
+  align-items: stretch;
 }
 
 .option-meta {

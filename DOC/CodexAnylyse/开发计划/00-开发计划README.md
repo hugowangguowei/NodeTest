@@ -1,0 +1,113 @@
+# 开发计划 README
+
+更新时间：2026-03-30
+
+状态：`当前有效`
+
+## 1. 这份文档解决什么问题
+
+本文件是当前项目开发计划层的唯一入口。
+
+它用于明确：
+
+1. 当前活动 WBS 节点
+2. 研发路线图放在哪里
+3. 当前执行切片放在哪里
+4. 历史计划如何处理
+5. 执行契约按什么模板组织
+
+## 2. 当前计划面结构
+
+当前开发计划层固定为：
+
+1. [00-开发计划README](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/00-开发计划README.md)
+2. [01-WBS-L0-NodeTest-研发总纲](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/01-WBS-L0-NodeTest-研发总纲.md)
+3. [02-WBS-L1-P1-平台定义与原型收敛](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/02-WBS-L1-P1-平台定义与原型收敛.md)
+4. [03-执行契约模板](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/03-执行契约模板.md)
+5. `执行契约/`
+6. `历史计划/`
+
+## 3. 当前活动 WBS 节点
+
+当前活动节点固定为：
+
+- `P1 平台定义与原型收敛`
+
+当前活动计划文件为：
+
+- [02-WBS-L1-P1-平台定义与原型收敛](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/02-WBS-L1-P1-平台定义与原型收敛.md)
+
+## 4. 当前路线图位置
+
+项目稳定路线图位于：
+
+- [01-WBS-L0-NodeTest-研发总纲](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/01-WBS-L0-NodeTest-研发总纲.md)
+
+该文档负责：
+
+1. 给出 L0 WBS 总体分解
+2. 说明里程碑门含义
+3. 标识各大块的推进顺序
+
+## 5. 当前执行方式
+
+当前项目已接入 GitHub Tracker。
+
+当前采用三层协同：
+
+1. Tracker 层：GitHub Project
+2. 执行契约层：GitHub Issue
+3. 长文档层：本地 `DOC/CodexAnylyse/`
+
+当前 Tracker 入口：
+
+- GitHub Project：
+  [NodeTest Delivery Roadmap](https://github.com/users/wgwtest/projects/2)
+
+当前执行契约入口：
+
+- [Issue #1 - P1.1 文档与策略面稳定](https://github.com/hugowangguowei/NodeTest/issues/1)
+- [Issue #2 - P1.2 平台定义面稳定](https://github.com/hugowangguowei/NodeTest/issues/2)
+- [Issue #3 - P1.3 浏览器原型人工验收与反馈闭环](https://github.com/hugowangguowei/NodeTest/issues/3)
+
+当前规则：
+
+1. WBS 节点和长说明继续在本地计划文档中维护
+2. 执行契约最小任务单同步落到 GitHub Issue
+3. 状态、阶段、里程碑归属、工作类型和日期在 GitHub Project 中维护
+4. 自测、验收、交接继续通过本地文档回链
+
+说明：
+
+- 由于当前活跃 GitHub 账号权限限制，Project 建在 `wgwtest` 名下
+- 执行 Issue 建在仓库 `hugowangguowei/NodeTest`
+
+## 6. 历史计划处理规则
+
+历史阶段计划统一放入：
+
+- `开发计划/历史计划/`
+
+这些文件保留用于：
+
+1. 回溯当时阶段判断
+2. 解释当前原型为何会形成现状
+3. 为后续新计划提供上下文
+
+它们不再作为当前执行入口。
+
+## 7. 执行契约规则
+
+如果后续拆出更细任务，执行契约应按以下模板组织：
+
+- [03-执行契约模板](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/03-执行契约模板.md)
+
+当前有效执行契约入口：
+
+- [执行契约/00-执行契约README](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/执行契约/00-执行契约README.md)
+
+## 8. 当前结论
+
+从现在开始，开发计划层不再依赖“当前阶段计划”这类临时命名。
+
+稳定计划文件以 WBS 节点命名，当前活动节点通过本文件标识，而不是靠反复改文件名表达。

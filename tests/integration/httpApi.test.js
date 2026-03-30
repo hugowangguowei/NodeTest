@@ -13,10 +13,10 @@ test('GET / returns the scenario builder shell', async () => {
   const response = await request(app).get('/');
 
   assert.equal(response.statusCode, 200);
-  assert.match(response.text, /场景构建台/);
-  assert.match(response.text, /知识要素区/);
-  assert.match(response.text, /场景组合区/);
-  assert.match(response.text, /输出区/);
+  assert.match(response.text, /软件工厂/);
+  assert.match(response.text, /行业\/领域知识仓库/);
+  assert.match(response.text, /定制软件定义区/);
+  assert.match(response.text, /构建能力单元/);
   assert.match(response.text, /<button[^>]*>生成场景<\/button>/);
   assert.match(response.text, /<button[^>]*>生成表达<\/button>/);
   assert.match(response.text, /<button[^>]*>记录构建流程<\/button>/);
@@ -38,6 +38,7 @@ test('GET /api/workbench/bootstrap returns fixed sample data', async () => {
   assert.equal(response.body.knowledge.knowledge_id, 'sk-001');
   assert.equal(response.body.scenarioDraft.scenario_id, 'scenario-001');
   assert.equal(response.body.experienceTemplate.experience_id, 'experience-001');
+  assert.equal(response.body.factoryCapabilities[0].id, 'factory-capability-001');
 });
 
 test('POST /api/scenarios/compose returns a scenario payload', async () => {
