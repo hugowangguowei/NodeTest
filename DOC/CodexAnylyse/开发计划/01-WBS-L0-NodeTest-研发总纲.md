@@ -1,6 +1,6 @@
 # WBS L0 NodeTest 研发总纲
 
-更新时间：2026-03-29
+更新时间：2026-03-30
 
 状态：`当前有效`
 
@@ -25,12 +25,22 @@
 
 - 稳定总设计稿、四层模型、三大模块关系和浏览器可验原型
 
+Tracker：
+
+- [Issue #1 - P1.1 文档与策略面稳定](https://github.com/hugowangguowei/NodeTest/issues/1)
+- [Issue #2 - P1.2 平台定义面稳定](https://github.com/hugowangguowei/NodeTest/issues/2)
+- [Issue #3 - P1.3 浏览器原型人工验收与反馈闭环](https://github.com/hugowangguowei/NodeTest/issues/3)
+
 ### P2 知识仓库与工厂模型深化
 
 目标：
 
 - 把知识仓库从固定样本切面推进到更可浏览的仓储形态
 - 把软件工厂内部异构对象逐步落为更稳定的对象模型和接口
+
+Tracker：
+
+- [Issue #5 - P2 知识仓库与工厂模型深化](https://github.com/hugowangguowei/NodeTest/issues/5)
 
 ### P3 定制软件定义态增强
 
@@ -39,12 +49,20 @@
 - 把当前 JSON 输出式定义态推进为更完整的软件定义视图
 - 增强终端中的工作台表达、透视结构和定义可读性
 
+Tracker：
+
+- [Issue #4 - P3 定制软件定义态增强](https://github.com/hugowangguowei/NodeTest/issues/4)
+
 ### P4 终端运行态与统一回写
 
 目标：
 
 - 将终端从定义态逐步推进到可交互运行态
 - 建立统一状态回写和事件联动机制
+
+Tracker：
+
+- [Issue #6 - P4 终端运行态与统一回写](https://github.com/hugowangguowei/NodeTest/issues/6)
 
 ## 3. 当前 L0 节点关系
 
@@ -102,6 +120,10 @@
 对应当前 L1 计划：
 
 - [02-WBS-L1-P1-平台定义与原型收敛](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/02-WBS-L1-P1-平台定义与原型收敛.md)
+
+当前路线图 Project：
+
+- [NodeTest Delivery Roadmap](https://github.com/users/wgwtest/projects/2)
 
 ## 6. Prep / Core 说明
 
