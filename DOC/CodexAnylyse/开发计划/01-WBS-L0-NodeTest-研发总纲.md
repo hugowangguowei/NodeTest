@@ -1,6 +1,6 @@
 # WBS L0 NodeTest 研发总纲
 
-更新时间：2026-03-30
+更新时间：2026-04-01
 
 状态：`当前有效`
 
@@ -19,6 +19,10 @@
 
 当前工程按以下 L0 节点分解：
 
+L0 根节点：
+
+- [Issue #7 - L0 研发总纲与路线图治理](https://github.com/hugowangguowei/NodeTest/issues/7)
+
 ### P1 平台定义与原型收敛
 
 目标：
@@ -27,6 +31,7 @@
 
 Tracker：
 
+- [Issue #8 - P1 平台定义与原型收敛（父节点）](https://github.com/hugowangguowei/NodeTest/issues/8)
 - [Issue #1 - P1.1 文档与策略面稳定](https://github.com/hugowangguowei/NodeTest/issues/1)
 - [Issue #2 - P1.2 平台定义面稳定](https://github.com/hugowangguowei/NodeTest/issues/2)
 - [Issue #3 - P1.3 浏览器原型人工验收与反馈闭环](https://github.com/hugowangguowei/NodeTest/issues/3)
@@ -40,7 +45,10 @@ Tracker：
 
 Tracker：
 
-- [Issue #5 - P2 知识仓库与工厂模型深化](https://github.com/hugowangguowei/NodeTest/issues/5)
+- [Issue #5 - P2 阶段父节点](https://github.com/hugowangguowei/NodeTest/issues/5)
+- [Issue #9 - P2.1 知识仓库状态域与对象模型基线](https://github.com/hugowangguowei/NodeTest/issues/9)
+- [Issue #10 - P2.2 软件工厂异构对象编排契约](https://github.com/hugowangguowei/NodeTest/issues/10)
+- [Issue #11 - P2.3 仓库统一更新链路与验证](https://github.com/hugowangguowei/NodeTest/issues/11)
 
 ### P3 定制软件定义态增强
 
@@ -51,7 +59,10 @@ Tracker：
 
 Tracker：
 
-- [Issue #4 - P3 定制软件定义态增强](https://github.com/hugowangguowei/NodeTest/issues/4)
+- [Issue #4 - P3 阶段父节点](https://github.com/hugowangguowei/NodeTest/issues/4)
+- [Issue #12 - P3.1 定制软件定义态视图模型](https://github.com/hugowangguowei/NodeTest/issues/12)
+- [Issue #13 - P3.2 工作台卡片与透视定义能力](https://github.com/hugowangguowei/NodeTest/issues/13)
+- [Issue #14 - P3.3 定义态验收脚本与证据闭环](https://github.com/hugowangguowei/NodeTest/issues/14)
 
 ### P4 终端运行态与统一回写
 
@@ -62,7 +73,10 @@ Tracker：
 
 Tracker：
 
-- [Issue #6 - P4 终端运行态与统一回写](https://github.com/hugowangguowei/NodeTest/issues/6)
+- [Issue #6 - P4 阶段父节点](https://github.com/hugowangguowei/NodeTest/issues/6)
+- [Issue #15 - P4.1 运行态会话与事件链路](https://github.com/hugowangguowei/NodeTest/issues/15)
+- [Issue #16 - P4.2 统一回写执行链与一致性校验](https://github.com/hugowangguowei/NodeTest/issues/16)
+- [Issue #17 - P4.3 运行态验收与门禁闭环](https://github.com/hugowangguowei/NodeTest/issues/17)
 
 ## 3. 当前 L0 节点关系
 
@@ -145,3 +159,10 @@ Tracker：
 当前项目已经从“无稳定计划面”升级为“L0 总纲 + L1 当前计划”的结构。
 
 后续新增计划必须挂接到本总纲，不再与其并列生长。
+
+当前 Tracker 树形已对齐为 `L0(#7) -> L1(P1/P2/P3/P4) -> L2(执行节点)`，后续新增节点应继续沿用该树结构。
+
+说明：
+
+- 受当前账号权限限制，暂未启用 GitHub 原生 Sub-issue
+- 当前树形治理以 `Project 字段（WBS Level/WBS Node/Parent Node）+ Issue 正文（WBS 节点/上级节点/子节点索引）` 为准

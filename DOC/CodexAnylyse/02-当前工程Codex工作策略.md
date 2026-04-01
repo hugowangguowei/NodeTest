@@ -1,6 +1,6 @@
 # 当前工程 Codex 工作策略
 
-更新时间：2026-03-30
+更新时间：2026-04-01
 
 ## 1. 目的
 
@@ -42,15 +42,29 @@
 - Tracker 层：
   [NodeTest Delivery Roadmap](https://github.com/users/wgwtest/projects/2)
 - 执行契约层：
+  [Issue #7](https://github.com/hugowangguowei/NodeTest/issues/7)
+  [Issue #8](https://github.com/hugowangguowei/NodeTest/issues/8)
   [Issue #1](https://github.com/hugowangguowei/NodeTest/issues/1)
   [Issue #2](https://github.com/hugowangguowei/NodeTest/issues/2)
   [Issue #3](https://github.com/hugowangguowei/NodeTest/issues/3)
+  [Issue #9](https://github.com/hugowangguowei/NodeTest/issues/9)
+  [Issue #10](https://github.com/hugowangguowei/NodeTest/issues/10)
+  [Issue #11](https://github.com/hugowangguowei/NodeTest/issues/11)
+  [Issue #12](https://github.com/hugowangguowei/NodeTest/issues/12)
+  [Issue #13](https://github.com/hugowangguowei/NodeTest/issues/13)
+  [Issue #14](https://github.com/hugowangguowei/NodeTest/issues/14)
+  [Issue #15](https://github.com/hugowangguowei/NodeTest/issues/15)
+  [Issue #16](https://github.com/hugowangguowei/NodeTest/issues/16)
+  [Issue #17](https://github.com/hugowangguowei/NodeTest/issues/17)
 - 长文档层仍在本地 `DOC/CodexAnylyse/`
 
 补充说明：
 
 - 由于当前活跃账号 `wgwtest` 对仓库 `hugowangguowei/NodeTest` 只有读取级仓库视图权限，Project 建在 `wgwtest` 名下
 - 由于仓库允许创建 Issue，执行契约落在仓库 Issue 中
+- 当前账号可创建/编辑 Issue 与 Project 条目字段
+- 当前账号无 `AddSubIssue` 权限，无法建立 GitHub 原生父子 Issue 关系
+- 当前账号无仓库标签维护权限，`gh label create/edit` 返回 `404`
 
 ### 3.2 执行契约策略
 
@@ -68,8 +82,22 @@
 - `Phase`
 - `Contributes To`
 - `Work Type`
+- `WBS Level`
+- `WBS Node`
+- `Parent Node`
 - `Start Date`
 - `Target Date`
+
+当前 Issue 契约基线：
+
+- 统一使用 `WBS 节点` 段（编码、层级、父节点）
+- 统一使用 `Depends On` 的 `#Issue编号` 引用
+- 统一使用 `上级节点` 的 `#Issue编号` 或 `ROOT`
+
+Issue 模板入口：
+
+- `.github/ISSUE_TEMPLATE/00-wbs-parent-node.md`
+- `.github/ISSUE_TEMPLATE/01-wbs-execution-node.md`
 
 ### 3.3 项目特定测试入口
 

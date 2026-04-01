@@ -1,6 +1,6 @@
 # 开发计划 README
 
-更新时间：2026-03-30
+更新时间：2026-04-01
 
 状态：`当前有效`
 
@@ -63,24 +63,49 @@
 
 - GitHub Project：
   [NodeTest Delivery Roadmap](https://github.com/users/wgwtest/projects/2)
+- WBS 根节点：
+  [Issue #7 - L0 研发总纲与路线图治理](https://github.com/hugowangguowei/NodeTest/issues/7)
 
 当前执行契约入口：
 
-- [Issue #1 - P1.1 文档与策略面稳定](https://github.com/hugowangguowei/NodeTest/issues/1)
-- [Issue #2 - P1.2 平台定义面稳定](https://github.com/hugowangguowei/NodeTest/issues/2)
-- [Issue #3 - P1.3 浏览器原型人工验收与反馈闭环](https://github.com/hugowangguowei/NodeTest/issues/3)
+- P1 父节点：
+  [Issue #8 - P1 平台定义与原型收敛（父节点）](https://github.com/hugowangguowei/NodeTest/issues/8)
+- P1 执行节点：
+  [Issue #1 - P1.1 文档与策略面稳定](https://github.com/hugowangguowei/NodeTest/issues/1)
+  [Issue #2 - P1.2 平台定义面稳定](https://github.com/hugowangguowei/NodeTest/issues/2)
+  [Issue #3 - P1.3 浏览器原型人工验收与反馈闭环](https://github.com/hugowangguowei/NodeTest/issues/3)
+- P2 父节点：
+  [Issue #5 - P2 知识仓库与工厂模型深化（父节点）](https://github.com/hugowangguowei/NodeTest/issues/5)
+- P2 执行节点：
+  [Issue #9 - P2.1 知识仓库状态域与对象模型基线](https://github.com/hugowangguowei/NodeTest/issues/9)
+  [Issue #10 - P2.2 软件工厂异构对象编排契约](https://github.com/hugowangguowei/NodeTest/issues/10)
+  [Issue #11 - P2.3 仓库统一更新链路与验证](https://github.com/hugowangguowei/NodeTest/issues/11)
+- P3 父节点：
+  [Issue #4 - P3 定制软件定义态增强（父节点）](https://github.com/hugowangguowei/NodeTest/issues/4)
+- P3 执行节点：
+  [Issue #12 - P3.1 定制软件定义态视图模型](https://github.com/hugowangguowei/NodeTest/issues/12)
+  [Issue #13 - P3.2 工作台卡片与透视定义能力](https://github.com/hugowangguowei/NodeTest/issues/13)
+  [Issue #14 - P3.3 定义态验收脚本与证据闭环](https://github.com/hugowangguowei/NodeTest/issues/14)
+- P4 父节点：
+  [Issue #6 - P4 终端运行态与统一回写（父节点）](https://github.com/hugowangguowei/NodeTest/issues/6)
+- P4 执行节点：
+  [Issue #15 - P4.1 运行态会话与事件链路](https://github.com/hugowangguowei/NodeTest/issues/15)
+  [Issue #16 - P4.2 统一回写执行链与一致性校验](https://github.com/hugowangguowei/NodeTest/issues/16)
+  [Issue #17 - P4.3 运行态验收与门禁闭环](https://github.com/hugowangguowei/NodeTest/issues/17)
 
 当前规则：
 
 1. WBS 节点和长说明继续在本地计划文档中维护
 2. 执行契约最小任务单同步落到 GitHub Issue
-3. 状态、阶段、里程碑归属、工作类型和日期在 GitHub Project 中维护
+3. 状态、阶段、里程碑归属、工作类型、WBS 层级、WBS 编码、父节点编码和日期在 GitHub Project 中维护
 4. 自测、验收、交接继续通过本地文档回链
 
 说明：
 
 - 由于当前活跃 GitHub 账号权限限制，Project 建在 `wgwtest` 名下
 - 执行 Issue 建在仓库 `hugowangguowei/NodeTest`
+- 当前账号无 `AddSubIssue` 权限，树形通过 `WBS Node + Parent Node + Issue正文父子索引` 表达
+- 当前账号无仓库标签维护权限，暂不依赖 label 体系作为主治理手段
 
 ## 6. 历史计划处理规则
 
@@ -105,6 +130,8 @@
 当前有效执行契约入口：
 
 - [执行契约/00-执行契约README](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/执行契约/00-执行契约README.md)
+- `.github/ISSUE_TEMPLATE/00-wbs-parent-node.md`
+- `.github/ISSUE_TEMPLATE/01-wbs-execution-node.md`
 
 ## 8. 当前结论
 

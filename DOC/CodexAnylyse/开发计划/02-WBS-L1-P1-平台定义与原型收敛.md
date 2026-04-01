@@ -1,6 +1,6 @@
 # WBS L1 P1 平台定义与原型收敛
 
-更新时间：2026-03-30
+更新时间：2026-04-01
 
 状态：`当前有效`
 
@@ -9,8 +9,16 @@
 上级节点：
 
 - `P1 平台定义与原型收敛`
+- Tracker 父节点：
+  [Issue #8 - P1 平台定义与原型收敛（父节点）](https://github.com/hugowangguowei/NodeTest/issues/8)
 
 本节点是当前工程的活动 L1 节点。
+
+Project 对齐字段：
+
+- `WBS Level = L1`
+- `WBS Node = P1`
+- `Parent Node = L0`
 
 ## 2. 本节点目标
 
