@@ -164,5 +164,5 @@ Tracker：
 
 说明：
 
-- 受当前账号权限限制，暂未启用 GitHub 原生 Sub-issue
-- 当前树形治理以 `Project 字段（WBS Level/WBS Node/Parent Node）+ Issue 正文（WBS 节点/上级节点/子节点索引）` 为准
+- 当前已启用 GitHub 原生 Sub-issue，树形关系为主表达
+- `Project 字段（WBS Level/WBS Node/Parent Node）+ Issue 正文（WBS 节点/上级节点/子节点索引）` 继续作为冗余校验与导航表达

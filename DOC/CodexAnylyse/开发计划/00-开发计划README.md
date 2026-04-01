@@ -102,10 +102,10 @@
 
 说明：
 
-- 由于当前活跃 GitHub 账号权限限制，Project 建在 `wgwtest` 名下
+- 当前 Project 建在 `wgwtest` 名下
 - 执行 Issue 建在仓库 `hugowangguowei/NodeTest`
-- 当前账号无 `AddSubIssue` 权限，树形通过 `WBS Node + Parent Node + Issue正文父子索引` 表达
-- 当前账号无仓库标签维护权限，暂不依赖 label 体系作为主治理手段
+- 当前账号已启用 `AddSubIssue`，树形以 GitHub 原生父子 Issue 为主，并保留 `WBS Node + Parent Node + Issue正文父子索引` 冗余表达
+- 当前账号已启用标签治理，Issue 统一使用 `wbs:* + phase:* + work:*` 标签组
 
 ## 6. 历史计划处理规则
 

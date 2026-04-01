@@ -60,11 +60,12 @@
 
 补充说明：
 
-- 由于当前活跃账号 `wgwtest` 对仓库 `hugowangguowei/NodeTest` 只有读取级仓库视图权限，Project 建在 `wgwtest` 名下
+- 当前活跃账号 `wgwtest` 对仓库 `hugowangguowei/NodeTest` 已具备 `WRITE` 权限
+- 当前 Project 仍建在 `wgwtest` 名下并由 `wgwtest` 维护
 - 由于仓库允许创建 Issue，执行契约落在仓库 Issue 中
 - 当前账号可创建/编辑 Issue 与 Project 条目字段
-- 当前账号无 `AddSubIssue` 权限，无法建立 GitHub 原生父子 Issue 关系
-- 当前账号无仓库标签维护权限，`gh label create/edit` 返回 `404`
+- 当前账号已可执行 `AddSubIssue`，已启用 GitHub 原生父子 Issue 关系
+- 当前账号已可维护仓库标签，标签治理已启用
 
 ### 3.2 执行契约策略
 
@@ -93,6 +94,13 @@
 - 统一使用 `WBS 节点` 段（编码、层级、父节点）
 - 统一使用 `Depends On` 的 `#Issue编号` 引用
 - 统一使用 `上级节点` 的 `#Issue编号` 或 `ROOT`
+- 优先使用 GitHub 原生 Sub-issue 建立父子关系，并保留正文索引作为冗余导航
+
+当前标签基线：
+
+- `wbs:l0` `wbs:l1` `wbs:l2`
+- `phase:p1` `phase:p2` `phase:p3` `phase:p4`
+- `work:plan` `work:prep` `work:core` `work:docs`
 
 Issue 模板入口：
 
