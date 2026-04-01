@@ -24,8 +24,9 @@
 2. [01-WBS-L0-NodeTest-研发总纲](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/01-WBS-L0-NodeTest-研发总纲.md)
 3. [02-WBS-L1-P1-平台定义与原型收敛](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/02-WBS-L1-P1-平台定义与原型收敛.md)
 4. [03-执行契约模板](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/03-执行契约模板.md)
-5. `执行契约/`
-6. `历史计划/`
+5. [P1子节点清单文档](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/P1子节点清单文档.md)
+6. `执行契约/`
+7. `历史计划/`
 
 ## 3. 当前活动 WBS 节点
 
@@ -69,11 +70,11 @@
 当前执行契约入口：
 
 - P1 父节点：
-  [Issue #8 - P1 平台定义与原型收敛（父节点）](https://github.com/hugowangguowei/NodeTest/issues/8)
+  [Issue #8 - P1 需求分析-原型设计-模块实现（父节点）](https://github.com/hugowangguowei/NodeTest/issues/8)
 - P1 执行节点：
-  [Issue #1 - P1.1 文档与策略面稳定](https://github.com/hugowangguowei/NodeTest/issues/1)
-  [Issue #2 - P1.2 平台定义面稳定](https://github.com/hugowangguowei/NodeTest/issues/2)
-  [Issue #3 - P1.3 浏览器原型人工验收与反馈闭环](https://github.com/hugowangguowei/NodeTest/issues/3)
+  [Issue #1 - P1.1 需求分析与验收基线](https://github.com/hugowangguowei/NodeTest/issues/1)
+  [Issue #2 - P1.2 原型设计与交互方案](https://github.com/hugowangguowei/NodeTest/issues/2)
+  [Issue #3 - P1.3 模块实现与最小联调闭环](https://github.com/hugowangguowei/NodeTest/issues/3)
 - P2 父节点：
   [Issue #5 - P2 知识仓库与工厂模型深化（父节点）](https://github.com/hugowangguowei/NodeTest/issues/5)
 - P2 执行节点：
