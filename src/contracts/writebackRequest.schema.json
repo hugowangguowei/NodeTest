@@ -1,0 +1,52 @@
+{
+  "$id": "writebackRequest",
+  "type": "object",
+  "required": [
+    "writeback_version",
+    "operation_id",
+    "source_type",
+    "target_domain",
+    "target_ref",
+    "mutation_type",
+    "payload",
+    "trace",
+    "requested_at"
+  ],
+  "properties": {
+    "writeback_version": { "type": "string" },
+    "operation_id": { "type": "string" },
+    "source_type": { "type": "string" },
+    "target_domain": {
+      "type": "string",
+      "enum": [
+        "master_data",
+        "knowledge_semantic",
+        "process_runtime",
+        "projection_state",
+        "audit_trace"
+      ]
+    },
+    "target_ref": { "type": "string" },
+    "mutation_type": {
+      "type": "string",
+      "enum": ["patch", "replace", "append"]
+    },
+    "payload": { "type": "object" },
+    "trace": {
+      "type": "object",
+      "required": [
+        "scenario_ref",
+        "experience_ref",
+        "workflow_ref"
+      ],
+      "properties": {
+        "scenario_ref": { "type": "string" },
+        "experience_ref": { "type": "string" },
+        "workflow_ref": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "requested_at": { "type": "string" }
+  },
+  "additionalProperties": false
+}

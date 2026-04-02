@@ -20,6 +20,7 @@ test('GET / returns the scenario builder shell', async () => {
   assert.match(response.text, /<button[^>]*>生成场景<\/button>/);
   assert.match(response.text, /<button[^>]*>生成表达<\/button>/);
   assert.match(response.text, /<button[^>]*>记录构建流程<\/button>/);
+  assert.match(response.text, /<button[^>]*>执行统一回写<\/button>/);
 });
 
 test('GET /health returns ok payload', async () => {
@@ -49,6 +50,57 @@ test('POST /api/scenarios/compose returns a scenario payload', async () => {
 
   assert.equal(response.statusCode, 200);
   assert.equal(response.body.scenario_id, 'scenario-001');
+});
+
+test('POST /api/repository/writeback applies unified update and can be observed', async () => {
+  const app = createApp();
+
+  const writebackResponse = await request(app).post('/api/repository/writeback').send({
+    writeback_version: '1.0.0',
+    operation_id: 'writeback-operation-001',
+    source_type: 'factory_execution',
+    target_domain: 'process_runtime',
+    target_ref: 'flow-instance-001',
+    mutation_type: 'patch',
+    payload: {
+      status: 'completed',
+      approval_result: 'approved'
+    },
+    trace: {
+      scenario_ref: 'scenario-001',
+      experience_ref: 'experience-001',
+      workflow_ref: 'build-001'
+    },
+    requested_at: '2026-04-02T00:00:00Z'
+  });
+
+  assert.equal(writebackResponse.statusCode, 200);
+  assert.equal(writebackResponse.body.status, 'applied');
+  assert.equal(writebackResponse.body.target_domain, 'process_runtime');
+  assert.equal(writebackResponse.body.next_snapshot.status, 'completed');
+
+  const logsResponse = await request(app).get('/api/repository/writeback/logs?limit=5');
+  assert.equal(logsResponse.statusCode, 200);
+  assert.equal(logsResponse.body.items.length, 1);
+  assert.equal(logsResponse.body.items[0].operation_id, 'writeback-operation-001');
+
+  const snapshotResponse = await request(app).get('/api/repository/writeback/snapshot');
+  assert.equal(snapshotResponse.statusCode, 200);
+  assert.equal(
+    snapshotResponse.body.domains.process_runtime['flow-instance-001'].approval_result,
+    'approved'
+  );
+});
+
+test('POST /api/repository/writeback rejects invalid request payload', async () => {
+  const app = createApp();
+  const response = await request(app).post('/api/repository/writeback').send({
+    operation_id: 'invalid-only-operation-id'
+  });
+
+  assert.equal(response.statusCode, 400);
+  assert.ok(Array.isArray(response.body.errors));
+  assert.ok(response.body.errors.length > 0);
 });
 
 test('app.js exports a start entrypoint', () => {

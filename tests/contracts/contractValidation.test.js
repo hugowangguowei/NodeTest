@@ -69,3 +69,25 @@ test('factory orchestration output passes schema validation', () => {
 
   assert.equal(validators.factoryOrchestration(orchestration), true);
 });
+
+test('writeback request passes schema validation', () => {
+  const requestPayload = {
+    writeback_version: '1.0.0',
+    operation_id: 'writeback-operation-001',
+    source_type: 'factory_execution',
+    target_domain: 'process_runtime',
+    target_ref: 'flow-instance-001',
+    mutation_type: 'patch',
+    payload: {
+      status: 'completed'
+    },
+    trace: {
+      scenario_ref: 'scenario-001',
+      experience_ref: 'experience-001',
+      workflow_ref: 'build-001'
+    },
+    requested_at: '2026-04-02T00:00:00Z'
+  };
+
+  assert.equal(validators.writebackRequest(requestPayload), true);
+});

@@ -10,6 +10,7 @@ const state = {
   currentScenario: null,
   currentExperience: null,
   currentWorkflow: null,
+  currentWriteback: null,
   errors: []
 };
 
@@ -33,6 +34,7 @@ function getElements() {
     generateScenarioButton: document.querySelector('[data-role="generate-scenario"]'),
     generateExperienceButton: document.querySelector('[data-role="generate-experience"]'),
     recordWorkflowButton: document.querySelector('[data-role="record-workflow"]'),
+    executeWritebackButton: document.querySelector('[data-role="execute-writeback"]'),
     resetButton: document.querySelector('[data-role="reset-builder"]')
   };
 }
@@ -243,6 +245,13 @@ function getWorkflowView() {
   };
 }
 
+function getWritebackView() {
+  return {
+    unified_writeback: state.currentWriteback || { message: '尚未执行统一回写' },
+    target_state_collection_ids: state.bootstrap.stateCollections.map((item) => item.id)
+  };
+}
+
 function getOutputPayload() {
   if (state.activeTab === 'scenario') {
     return getSoftwareDefinitionView();
@@ -254,6 +263,10 @@ function getOutputPayload() {
 
   if (state.activeTab === 'workflow') {
     return getWorkflowView();
+  }
+
+  if (state.activeTab === 'writeback') {
+    return getWritebackView();
   }
 
   return state.errors.length > 0 ? { errors: state.errors } : { message: '当前无错误' };
@@ -350,6 +363,55 @@ async function handleRecordWorkflow() {
   renderOutput();
 }
 
+async function fetchJson(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || `Request failed: ${response.status}`);
+  }
+  return response.json();
+}
+
+async function handleExecuteWriteback() {
+  clearError();
+
+  if (!state.currentScenario || !state.currentExperience || !state.currentWorkflow) {
+    setError('请先完成场景、表达和构建流程，再执行统一回写。');
+    return;
+  }
+
+  const writebackPayload = {
+    writeback_version: '1.0.0',
+    operation_id: `writeback-operation-${Date.now()}`,
+    source_type: 'factory_execution',
+    target_domain: 'process_runtime',
+    target_ref: state.currentScenario.scenario_id,
+    mutation_type: 'patch',
+    payload: {
+      status: 'synced',
+      last_experience_ref: state.currentExperience.experience_id,
+      last_workflow_ref: state.currentWorkflow.build_workflow_id
+    },
+    trace: {
+      scenario_ref: state.currentScenario.scenario_id,
+      experience_ref: state.currentExperience.experience_id,
+      workflow_ref: state.currentWorkflow.build_workflow_id
+    },
+    requested_at: new Date().toISOString()
+  };
+
+  const writebackResult = await postJson('/api/repository/writeback', writebackPayload);
+  const logsResult = await fetchJson('/api/repository/writeback/logs?limit=5');
+
+  state.currentWriteback = {
+    request: writebackPayload,
+    result: writebackResult,
+    latest_logs: logsResult.items
+  };
+  state.activeTab = 'writeback';
+  renderOutput();
+}
+
 function fillIntentFields() {
   const { scenarioId, scenarioName, scenarioGoal, scenarioDescription, targetUsers } = getElements();
   const draft = state.bootstrap.scenarioDraft;
@@ -370,6 +432,7 @@ function resetWorkbench() {
   state.currentScenario = null;
   state.currentExperience = null;
   state.currentWorkflow = null;
+  state.currentWriteback = null;
   state.activeTab = 'scenario';
   clearError();
 
@@ -436,6 +499,10 @@ function bindEvents() {
 
   elements.recordWorkflowButton.addEventListener('click', () => {
     handleRecordWorkflow().catch((error) => setError(error.message));
+  });
+
+  elements.executeWritebackButton.addEventListener('click', () => {
+    handleExecuteWriteback().catch((error) => setError(error.message));
   });
 
   elements.resetButton.addEventListener('click', () => {
