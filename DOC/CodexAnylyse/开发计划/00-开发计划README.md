@@ -1,6 +1,6 @@
 # 开发计划 README
 
-更新时间：2026-04-01
+更新时间：2026-04-02
 
 状态：`当前有效`
 
@@ -62,8 +62,10 @@
 
 当前 Tracker 入口：
 
-- GitHub Project：
-  [NodeTest Delivery Roadmap](https://github.com/users/wgwtest/projects/2)
+- GitHub Project（主入口）：
+  [NodeTest Delivery Roadmap（owner）](https://github.com/users/hugowangguowei/projects/1)
+- GitHub Project（镜像）：
+  [NodeTest Delivery Roadmap（mirror）](https://github.com/users/wgwtest/projects/2)
 - WBS 根节点：
   [Issue #7 - L0 研发总纲与路线图治理](https://github.com/hugowangguowei/NodeTest/issues/7)
 
@@ -98,12 +100,16 @@
 
 1. WBS 节点和长说明继续在本地计划文档中维护
 2. 执行契约最小任务单同步落到 GitHub Issue
-3. 状态、阶段、里程碑归属、工作类型、WBS 层级、WBS 编码、父节点编码和日期在 GitHub Project 中维护
-4. 自测、验收、交接继续通过本地文档回链
+3. 严格树形真源固定为 `GitHub Issues + Sub-issues`
+4. 状态、阶段、里程碑归属、工作类型、WBS 层级、WBS 编码、父节点编码和日期在 GitHub Project 中维护
+5. 同级节点顺序固定按 WBS 编码维护（`P1 -> P2 -> P3 -> P4`）
+6. 顺序同步必须覆盖：Sub-issue 顺序、Issue 正文子节点索引、Project item 顺序
+7. 自测、验收、交接继续通过本地文档回链
 
 说明：
 
-- 当前 Project 建在 `wgwtest` 名下
+- 当前主 Project 建在 `hugowangguowei` 名下
+- `wgwtest` 名下 Project 作为镜像视图同步维护
 - 执行 Issue 建在仓库 `hugowangguowei/NodeTest`
 - 当前账号已启用 `AddSubIssue`，树形以 GitHub 原生父子 Issue 为主，并保留 `WBS Node + Parent Node + Issue正文父子索引` 冗余表达
 - 当前账号已启用标签治理，Issue 统一使用 `wbs:* + phase:* + work:*` 标签组

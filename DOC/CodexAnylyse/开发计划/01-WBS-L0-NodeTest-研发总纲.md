@@ -137,7 +137,8 @@ Tracker：
 
 当前路线图 Project：
 
-- [NodeTest Delivery Roadmap](https://github.com/users/wgwtest/projects/2)
+- 主入口：[NodeTest Delivery Roadmap（owner）](https://github.com/users/hugowangguowei/projects/1)
+- 镜像入口：[NodeTest Delivery Roadmap（mirror）](https://github.com/users/wgwtest/projects/2)
 
 ## 6. Prep / Core 说明
 

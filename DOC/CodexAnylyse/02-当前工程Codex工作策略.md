@@ -1,6 +1,6 @@
 # 当前工程 Codex 工作策略
 
-更新时间：2026-04-01
+更新时间：2026-04-02
 
 ## 1. 目的
 
@@ -39,8 +39,10 @@
 
 当前处理方式：
 
-- Tracker 层：
-  [NodeTest Delivery Roadmap](https://github.com/users/wgwtest/projects/2)
+- Tracker 主入口：
+  [NodeTest Delivery Roadmap（owner）](https://github.com/users/hugowangguowei/projects/1)
+- Tracker 镜像入口：
+  [NodeTest Delivery Roadmap（mirror）](https://github.com/users/wgwtest/projects/2)
 - 执行契约层：
   [Issue #7](https://github.com/hugowangguowei/NodeTest/issues/7)
   [Issue #8](https://github.com/hugowangguowei/NodeTest/issues/8)
@@ -61,7 +63,8 @@
 补充说明：
 
 - 当前活跃账号 `wgwtest` 对仓库 `hugowangguowei/NodeTest` 已具备 `WRITE` 权限
-- 当前 Project 仍建在 `wgwtest` 名下并由 `wgwtest` 维护
+- 研发主 Tracker 固定为 `hugowangguowei/projects/1`
+- `wgwtest/projects/2` 仅作为镜像视图保留，顺序与字段必须与主 Tracker 同步
 - 由于仓库允许创建 Issue，执行契约落在仓库 Issue 中
 - 当前账号可创建/编辑 Issue 与 Project 条目字段
 - 当前账号已可执行 `AddSubIssue`，已启用 GitHub 原生父子 Issue 关系
@@ -96,6 +99,21 @@
 - 统一使用 `上级节点` 的 `#Issue编号` 或 `ROOT`
 - 优先使用 GitHub 原生 Sub-issue 建立父子关系，并保留正文索引作为冗余导航
 
+### 3.3 WBS 树与排序强约束
+
+从本次更新开始，NodeTest 的 WBS 治理采用与 NodeConsoleApp2 一致的硬约束：
+
+1. `GitHub Issues + Sub-issues` 是严格树形真源
+2. `GitHub Project` 只作为镜像展示层，不得单独定义树结构
+3. 里程碑（`M1~M4`）只能作为字段（`Contributes To`）表达，不作为树节点
+4. 同级节点必须按 WBS 编码顺序维护：
+   - L1：`P1 -> P2 -> P3 -> P4`
+   - L2：`P*.1 -> P*.2 -> P*.3`
+5. 顺序同步必须三处同轮完成：
+   - Sub-issue 顺序
+   - Issue 正文 `子节点索引`
+   - Project item 顺序
+
 L1 默认拆分顺序（避免抽象化）：
 
 1. 需求分析（文档）
@@ -113,7 +131,7 @@ Issue 模板入口：
 - `.github/ISSUE_TEMPLATE/00-wbs-parent-node.md`
 - `.github/ISSUE_TEMPLATE/01-wbs-execution-node.md`
 
-### 3.3 项目特定测试入口
+### 3.4 项目特定测试入口
 
 当前项目的主要验证入口为：
 
