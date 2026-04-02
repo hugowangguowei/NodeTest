@@ -26,7 +26,7 @@
 
 当前子节点：
 
-1. [Issue #1 - P1.1 需求分析与验收基线](https://github.com/hugowangguowei/NodeTest/issues/1)
+1. [Issue #1 - P1.1 需求分析](https://github.com/hugowangguowei/NodeTest/issues/1)
 2. [Issue #2 - P1.2 原型设计与交互方案](https://github.com/hugowangguowei/NodeTest/issues/2)
 3. [Issue #3 - P1.3 模块实现与最小联调闭环](https://github.com/hugowangguowei/NodeTest/issues/3)
 
@@ -35,7 +35,7 @@
 ### P1.1 需求分析
 
 - 文档：
-  [2026-04-02-P1.1-需求分析与验收基线](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/设计说明/2026-04-02-P1.1-需求分析与验收基线.md)
+  [2026-04-02-P1.1-需求分析](/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/设计说明/2026-04-02-P1.1-需求分析.md)
 
 ### P1.2 原型设计
 

@@ -32,7 +32,7 @@ L0 根节点：
 Tracker：
 
 - [Issue #8 - P1 需求分析-原型设计-模块实现（父节点）](https://github.com/hugowangguowei/NodeTest/issues/8)
-- [Issue #1 - P1.1 需求分析与验收基线](https://github.com/hugowangguowei/NodeTest/issues/1)
+- [Issue #1 - P1.1 需求分析](https://github.com/hugowangguowei/NodeTest/issues/1)
 - [Issue #2 - P1.2 原型设计与交互方案](https://github.com/hugowangguowei/NodeTest/issues/2)
 - [Issue #3 - P1.3 模块实现与最小联调闭环](https://github.com/hugowangguowei/NodeTest/issues/3)
 
