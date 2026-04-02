@@ -46,3 +46,7 @@ Depends On：
 上级节点：
 - #<L1父节点Issue编号>
 
+路径规范：
+- GitHub Issue / Project 中的路径统一写仓库相对路径（如 `src/server/routes.js`、`DOC/CodexAnylyse/设计说明/...`）
+- 需要可点击入口时，补充 GitHub 仓库 URL（如 `https://github.com/<owner>/<repo>/blob/<branch>/src/...`）
+- 禁止写本机绝对路径（如 `/home/wgw/...`）

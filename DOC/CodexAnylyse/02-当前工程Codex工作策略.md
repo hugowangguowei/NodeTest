@@ -131,7 +131,20 @@ Issue 模板入口：
 - `.github/ISSUE_TEMPLATE/00-wbs-parent-node.md`
 - `.github/ISSUE_TEMPLATE/01-wbs-execution-node.md`
 
-### 3.4 项目特定测试入口
+### 3.4 协作路径写法规则
+
+用于 GitHub 协作（Issue / Project / PR 评论）时，路径统一按以下规则：
+
+1. 优先使用仓库相对路径：
+   - `DOC/CodexAnylyse/...`
+   - `src/...`
+   - `tests/...`
+2. 需要跨成员可点击时，补充仓库 URL：
+   - `https://github.com/<owner>/<repo>/blob/<branch>/...`
+3. 禁止写本机绝对路径：
+   - `/home/wgw/...`
+
+### 3.5 项目特定测试入口
 
 当前项目的主要验证入口为：
 

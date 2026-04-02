@@ -25,8 +25,8 @@ Depends On：
 - #<前置Issue编号> / 无
 
 验收入口：
-- 主入口：https://github.com/users/wgwtest/projects/2
-- 辅助入口：/home/wgw/CodexProject/NodeTest/DOC/CodexAnylyse/开发计划/
+- 主入口：https://github.com/users/hugowangguowei/projects/1
+- 辅助入口：DOC/CodexAnylyse/开发计划/
 
 验收标准：
 - 子节点拆分边界清晰、无明显重叠
@@ -52,3 +52,7 @@ Depends On：
 子节点索引：
 - [ ] #<子节点Issue编号>
 
+路径规范：
+- GitHub Issue / Project 中的路径统一写仓库相对路径（如 `DOC/CodexAnylyse/设计稿/00-平台总设计稿.md`）
+- 需要可点击入口时，补充 GitHub 仓库 URL（如 `https://github.com/<owner>/<repo>/blob/<branch>/DOC/...`）
+- 禁止写本机绝对路径（如 `/home/wgw/...`）
