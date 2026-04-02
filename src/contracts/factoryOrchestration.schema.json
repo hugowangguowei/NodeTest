@@ -1,0 +1,72 @@
+{
+  "$id": "factoryOrchestration",
+  "type": "object",
+  "required": [
+    "factory_orchestration_version",
+    "request_id",
+    "scenario_ref",
+    "experience_ref",
+    "selected_object_refs",
+    "plan_steps",
+    "dependency_edges",
+    "execution_report"
+  ],
+  "properties": {
+    "factory_orchestration_version": { "type": "string" },
+    "request_id": { "type": "string" },
+    "scenario_ref": { "type": "string" },
+    "experience_ref": { "type": "string" },
+    "selected_object_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "plan_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["step_id", "object_ref", "action", "stage"],
+        "properties": {
+          "step_id": { "type": "string" },
+          "object_ref": { "type": "string" },
+          "action": { "type": "string" },
+          "stage": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "dependency_edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from_step_ref", "to_step_ref", "dependency_type"],
+        "properties": {
+          "from_step_ref": { "type": "string" },
+          "to_step_ref": { "type": "string" },
+          "dependency_type": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "execution_report": {
+      "type": "object",
+      "required": ["status", "operation_log_refs"],
+      "properties": {
+        "status": { "type": "string" },
+        "operation_log_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "errors": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "warnings": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

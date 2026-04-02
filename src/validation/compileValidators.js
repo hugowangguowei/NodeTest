@@ -9,12 +9,14 @@ ajv.addSchema(schemas.standardKnowledge, 'standardKnowledge');
 ajv.addSchema(schemas.scenario, 'scenario');
 ajv.addSchema(schemas.experience, 'experience');
 ajv.addSchema(schemas.buildWorkflow, 'buildWorkflow');
+ajv.addSchema(schemas.factoryOrchestration, 'factoryOrchestration');
 
 const validators = {
   standardKnowledge: ajv.getSchema('standardKnowledge'),
   scenario: ajv.getSchema('scenario'),
   experience: ajv.getSchema('experience'),
-  buildWorkflow: ajv.getSchema('buildWorkflow')
+  buildWorkflow: ajv.getSchema('buildWorkflow'),
+  factoryOrchestration: ajv.getSchema('factoryOrchestration')
 };
 
 module.exports = { validators };

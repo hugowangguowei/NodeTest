@@ -36,3 +36,36 @@ test('scenario output passes scenario schema validation', () => {
 
   assert.equal(validators.scenario(scenario), true);
 });
+
+test('factory orchestration output passes schema validation', () => {
+  const orchestration = {
+    factory_orchestration_version: '1.0.0',
+    request_id: 'assembly-request-001',
+    scenario_ref: 'scenario-001',
+    experience_ref: 'experience-001',
+    selected_object_refs: ['factory-object-001'],
+    plan_steps: [
+      {
+        step_id: 'step-001',
+        object_ref: 'factory-object-001',
+        action: 'validate',
+        stage: 'assembly'
+      }
+    ],
+    dependency_edges: [
+      {
+        from_step_ref: 'step-001',
+        to_step_ref: 'step-001',
+        dependency_type: 'soft'
+      }
+    ],
+    execution_report: {
+      status: 'success',
+      operation_log_refs: ['oplog-001'],
+      errors: [],
+      warnings: []
+    }
+  };
+
+  assert.equal(validators.factoryOrchestration(orchestration), true);
+});
