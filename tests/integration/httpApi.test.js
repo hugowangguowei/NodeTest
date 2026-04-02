@@ -20,6 +20,7 @@ test('GET / returns the scenario builder shell', async () => {
   assert.match(response.text, /<button[^>]*>生成场景<\/button>/);
   assert.match(response.text, /<button[^>]*>生成表达<\/button>/);
   assert.match(response.text, /<button[^>]*>记录构建流程<\/button>/);
+  assert.match(response.text, /<button[^>]*>执行工厂编排<\/button>/);
   assert.match(response.text, /<button[^>]*>执行统一回写<\/button>/);
 });
 
@@ -101,6 +102,98 @@ test('POST /api/repository/writeback rejects invalid request payload', async () 
   assert.equal(response.statusCode, 400);
   assert.ok(Array.isArray(response.body.errors));
   assert.ok(response.body.errors.length > 0);
+});
+
+test('GET /api/factory/catalog returns published factory objects by default', async () => {
+  const app = createApp();
+  const response = await request(app).get('/api/factory/catalog');
+
+  assert.equal(response.statusCode, 200);
+  assert.ok(Array.isArray(response.body.items));
+  assert.equal(response.body.total, response.body.items.length);
+  assert.ok(response.body.items.length > 0);
+  assert.ok(response.body.items.every((item) => item.lifecycle_status === 'published'));
+});
+
+test('POST /api/factory/compatibility/check returns conflict for unknown object refs', async () => {
+  const app = createApp();
+  const response = await request(app).post('/api/factory/compatibility/check').send({
+    object_refs: ['factory-object-not-exist'],
+    constraints: {
+      require_published: true,
+      allow_deprecated: false
+    }
+  });
+
+  assert.equal(response.statusCode, 200);
+  assert.equal(response.body.compatible, false);
+  assert.equal(response.body.conflicts[0].code, 'factory_object_not_found');
+});
+
+test('POST /api/factory/assembly/plan returns ordered plan for selected objects', async () => {
+  const app = createApp();
+  const response = await request(app).post('/api/factory/assembly/plan').send({
+    request_id: 'assembly-request-001',
+    scenario_ref: 'scenario-001',
+    experience_ref: 'experience-001',
+    selected_object_refs: ['factory-object-001', 'factory-object-002', 'factory-object-003'],
+    constraints: {
+      require_published: true,
+      allow_deprecated: false
+    }
+  });
+
+  assert.equal(response.statusCode, 200);
+  assert.match(response.body.plan_id, /^assembly-plan-/);
+  assert.equal(response.body.plan_steps.length, 3);
+  assert.deepEqual(response.body.plan_steps.map((step) => step.object_ref), [
+    'factory-object-001',
+    'factory-object-002',
+    'factory-object-003'
+  ]);
+  assert.equal(response.body.validation_result.status, 'ok');
+});
+
+test('POST /api/factory/assembly/execute executes planned steps and returns operation logs', async () => {
+  const app = createApp();
+  const planResponse = await request(app).post('/api/factory/assembly/plan').send({
+    request_id: 'assembly-request-002',
+    scenario_ref: 'scenario-001',
+    experience_ref: 'experience-001',
+    selected_object_refs: ['factory-object-001', 'factory-object-002'],
+    constraints: {
+      require_published: true,
+      allow_deprecated: false
+    }
+  });
+
+  assert.equal(planResponse.statusCode, 200);
+
+  const executeResponse = await request(app).post('/api/factory/assembly/execute').send({
+    plan_id: planResponse.body.plan_id
+  });
+
+  assert.equal(executeResponse.statusCode, 200);
+  assert.match(executeResponse.body.execution_id, /^assembly-exec-/);
+  assert.equal(executeResponse.body.step_results.length, 2);
+  assert.equal(executeResponse.body.operation_log_refs.length, 2);
+  assert.equal(executeResponse.body.errors.length, 0);
+});
+
+test('POST /api/factory/publish updates lifecycle for draft objects and can be queried', async () => {
+  const app = createApp();
+  const publishResponse = await request(app).post('/api/factory/publish').send({
+    object_refs: ['factory-object-004']
+  });
+
+  assert.equal(publishResponse.statusCode, 200);
+  assert.deepEqual(publishResponse.body.updated_refs, ['factory-object-004']);
+  assert.equal(publishResponse.body.target_lifecycle_status, 'published');
+
+  const catalogResponse = await request(app).get('/api/factory/catalog?kind=rule_pack');
+  assert.equal(catalogResponse.statusCode, 200);
+  assert.equal(catalogResponse.body.items.length, 1);
+  assert.equal(catalogResponse.body.items[0].lifecycle_status, 'published');
 });
 
 test('app.js exports a start entrypoint', () => {

@@ -10,6 +10,7 @@ const state = {
   currentScenario: null,
   currentExperience: null,
   currentWorkflow: null,
+  currentFactoryOrchestration: null,
   currentWriteback: null,
   errors: []
 };
@@ -34,6 +35,7 @@ function getElements() {
     generateScenarioButton: document.querySelector('[data-role="generate-scenario"]'),
     generateExperienceButton: document.querySelector('[data-role="generate-experience"]'),
     recordWorkflowButton: document.querySelector('[data-role="record-workflow"]'),
+    executeFactoryOrchestrationButton: document.querySelector('[data-role="execute-factory-orchestration"]'),
     executeWritebackButton: document.querySelector('[data-role="execute-writeback"]'),
     resetButton: document.querySelector('[data-role="reset-builder"]')
   };
@@ -144,6 +146,18 @@ function getSelectedCapabilities() {
   );
 }
 
+function resolveFactoryObjectRefs() {
+  const capabilityToObjectRef = {
+    'factory-capability-001': 'factory-object-001',
+    'factory-capability-002': 'factory-object-002',
+    'factory-capability-003': 'factory-object-003'
+  };
+
+  return Array.from(state.selectedFactoryCapabilityIds)
+    .map((id) => capabilityToObjectRef[id])
+    .filter(Boolean);
+}
+
 function renderSelectionSummary() {
   const { selectedSummary } = getElements();
   const intent = getSoftwareIntent();
@@ -245,6 +259,13 @@ function getWorkflowView() {
   };
 }
 
+function getFactoryOrchestrationView() {
+  return {
+    factory_orchestration: state.currentFactoryOrchestration || { message: '尚未执行工厂编排' },
+    mapped_factory_object_refs: resolveFactoryObjectRefs()
+  };
+}
+
 function getWritebackView() {
   return {
     unified_writeback: state.currentWriteback || { message: '尚未执行统一回写' },
@@ -263,6 +284,10 @@ function getOutputPayload() {
 
   if (state.activeTab === 'workflow') {
     return getWorkflowView();
+  }
+
+  if (state.activeTab === 'factory') {
+    return getFactoryOrchestrationView();
   }
 
   if (state.activeTab === 'writeback') {
@@ -375,8 +400,13 @@ async function fetchJson(url) {
 async function handleExecuteWriteback() {
   clearError();
 
-  if (!state.currentScenario || !state.currentExperience || !state.currentWorkflow) {
-    setError('请先完成场景、表达和构建流程，再执行统一回写。');
+  if (
+    !state.currentScenario ||
+    !state.currentExperience ||
+    !state.currentWorkflow ||
+    !state.currentFactoryOrchestration
+  ) {
+    setError('请先完成场景、表达、构建流程和工厂编排，再执行统一回写。');
     return;
   }
 
@@ -390,7 +420,9 @@ async function handleExecuteWriteback() {
     payload: {
       status: 'synced',
       last_experience_ref: state.currentExperience.experience_id,
-      last_workflow_ref: state.currentWorkflow.build_workflow_id
+      last_workflow_ref: state.currentWorkflow.build_workflow_id,
+      last_factory_execution_ref: state.currentFactoryOrchestration.execution_report.execution_id,
+      factory_operation_log_refs: state.currentFactoryOrchestration.execution_report.operation_log_refs
     },
     trace: {
       scenario_ref: state.currentScenario.scenario_id,
@@ -409,6 +441,45 @@ async function handleExecuteWriteback() {
     latest_logs: logsResult.items
   };
   state.activeTab = 'writeback';
+  renderOutput();
+}
+
+async function handleFactoryOrchestration() {
+  clearError();
+
+  if (!state.currentScenario || !state.currentExperience) {
+    setError('请先生成软件定义和表达，再执行工厂编排。');
+    return;
+  }
+
+  const selectedObjectRefs = resolveFactoryObjectRefs();
+  if (selectedObjectRefs.length === 0) {
+    setError('请至少选择一个构建能力单元后，再执行工厂编排。');
+    return;
+  }
+
+  const requestPayload = {
+    request_id: `assembly-request-${Date.now()}`,
+    scenario_ref: state.currentScenario.scenario_id,
+    experience_ref: state.currentExperience.experience_id,
+    selected_object_refs: selectedObjectRefs,
+    constraints: {
+      require_published: true,
+      allow_deprecated: false
+    }
+  };
+
+  const plan = await postJson('/api/factory/assembly/plan', requestPayload);
+  const executionReport = await postJson('/api/factory/assembly/execute', {
+    plan_id: plan.plan_id
+  });
+
+  state.currentFactoryOrchestration = {
+    request: requestPayload,
+    plan,
+    execution_report: executionReport
+  };
+  state.activeTab = 'factory';
   renderOutput();
 }
 
@@ -432,6 +503,7 @@ function resetWorkbench() {
   state.currentScenario = null;
   state.currentExperience = null;
   state.currentWorkflow = null;
+  state.currentFactoryOrchestration = null;
   state.currentWriteback = null;
   state.activeTab = 'scenario';
   clearError();
@@ -499,6 +571,10 @@ function bindEvents() {
 
   elements.recordWorkflowButton.addEventListener('click', () => {
     handleRecordWorkflow().catch((error) => setError(error.message));
+  });
+
+  elements.executeFactoryOrchestrationButton.addEventListener('click', () => {
+    handleFactoryOrchestration().catch((error) => setError(error.message));
   });
 
   elements.executeWritebackButton.addEventListener('click', () => {
