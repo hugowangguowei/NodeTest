@@ -107,12 +107,140 @@ function getLayerIndex(nodeType) {
   return LAYER_ORDER.length - 1;
 }
 
+const LAYER_GAP = 260;
+const X_PADDING = 150;
+const Y_PADDING = 80;
+const NODE_VERTICAL_GAP = 88;
+const ORDER_SWEEP_TIMES = 5;
+
+function buildNeighborMap(edges) {
+  const neighborMap = new Map();
+
+  function ensureNode(nodeId) {
+    if (!neighborMap.has(nodeId)) {
+      neighborMap.set(nodeId, new Set());
+    }
+  }
+
+  edges.forEach((edge) => {
+    if (!edge || typeof edge.source !== 'string' || typeof edge.target !== 'string') {
+      return;
+    }
+
+    ensureNode(edge.source);
+    ensureNode(edge.target);
+    neighborMap.get(edge.source).add(edge.target);
+    neighborMap.get(edge.target).add(edge.source);
+  });
+
+  return neighborMap;
+}
+
+function buildOrderIndexMap(grouped) {
+  const orderIndexMap = new Map();
+
+  grouped.forEach((group, layerIndex) => {
+    const layerSize = group.nodes.length;
+    group.nodes.forEach((node, orderIndex) => {
+      orderIndexMap.set(node.id, {
+        layerIndex,
+        orderIndex,
+        layerSize
+      });
+    });
+  });
+
+  return orderIndexMap;
+}
+
+function projectedOrder(meta, targetLayerSize) {
+  if (targetLayerSize <= 1) {
+    return 0;
+  }
+
+  const normalized =
+    meta.layerSize <= 1 ? 0.5 : meta.orderIndex / Math.max(meta.layerSize - 1, 1);
+  return normalized * (targetLayerSize - 1);
+}
+
+function reorderLayerByConnectivity(grouped, layerIndex, neighborMap) {
+  const currentNodes = grouped[layerIndex].nodes;
+  if (currentNodes.length <= 2) {
+    return;
+  }
+
+  const orderIndexMap = buildOrderIndexMap(grouped);
+  const targetSize = currentNodes.length;
+
+  const scored = currentNodes.map((node, fallbackIndex) => {
+    const neighbors = Array.from(neighborMap.get(node.id) || []);
+    const scoreItems = neighbors
+      .map((neighborId) => {
+        const meta = orderIndexMap.get(neighborId);
+        if (!meta) {
+          return null;
+        }
+
+        const layerDistance = Math.abs(meta.layerIndex - layerIndex);
+        const weight = layerDistance === 0 ? 0.35 : 1 / layerDistance;
+        return {
+          value: projectedOrder(meta, targetSize),
+          weight
+        };
+      })
+      .filter(Boolean);
+
+    if (scoreItems.length === 0) {
+      return {
+        node,
+        score: fallbackIndex
+      };
+    }
+
+    const totalWeight = scoreItems.reduce((sum, item) => sum + item.weight, 0);
+    const weightedScore =
+      scoreItems.reduce((sum, item) => sum + item.value * item.weight, 0) /
+      Math.max(totalWeight, 0.0001);
+
+    return {
+      node,
+      score: weightedScore
+    };
+  });
+
+  scored.sort((left, right) => {
+    if (Math.abs(left.score - right.score) > 0.001) {
+      return left.score - right.score;
+    }
+
+    const leftLabel = left.node.label || left.node.id;
+    const rightLabel = right.node.label || right.node.id;
+    return leftLabel.localeCompare(rightLabel, 'zh-CN');
+  });
+
+  grouped[layerIndex].nodes = scored.map((item) => item.node);
+}
+
+function applyConnectivityOrdering(grouped, edges) {
+  const neighborMap = buildNeighborMap(edges);
+  if (neighborMap.size === 0) {
+    return;
+  }
+
+  for (let sweep = 0; sweep < ORDER_SWEEP_TIMES; sweep += 1) {
+    for (let layerIndex = 1; layerIndex < grouped.length; layerIndex += 1) {
+      reorderLayerByConnectivity(grouped, layerIndex, neighborMap);
+    }
+
+    for (let layerIndex = grouped.length - 2; layerIndex >= 0; layerIndex -= 1) {
+      reorderLayerByConnectivity(grouped, layerIndex, neighborMap);
+    }
+  }
+}
+
 function layoutGraph(nodes, edges) {
   const { graphScroll } = getElements();
   const minWidth = Math.max(graphScroll.clientWidth - 2, 1320);
-  const layerGap = 260;
-  const xPadding = 150;
-  const yPadding = 80;
 
   const grouped = LAYER_ORDER.map((layer) => ({
     ...layer,
@@ -131,20 +259,23 @@ function layoutGraph(nodes, edges) {
     });
   });
 
+  applyConnectivityOrdering(grouped, edges);
+
   const maxLayerSize = grouped.reduce((max, layer) => Math.max(max, layer.nodes.length), 1);
-  const viewHeight = yPadding * 2 + maxLayerSize * 88;
-  const viewWidth = Math.max(minWidth, xPadding * 2 + (grouped.length - 1) * layerGap + 160);
+  const viewHeight = Y_PADDING * 2 + maxLayerSize * NODE_VERTICAL_GAP + 80;
+  const viewWidth = Math.max(minWidth, X_PADDING * 2 + (grouped.length - 1) * LAYER_GAP + 160);
 
   const positionedNodes = [];
   const positionedMap = new Map();
 
   grouped.forEach((layer, layerIndex) => {
-    const x = xPadding + layerIndex * layerGap;
-    const layerHeight = Math.max(layer.nodes.length * 88, 120);
-    const startY = (viewHeight - layerHeight) / 2 + 28;
+    const x = X_PADDING + layerIndex * LAYER_GAP;
+    const layerHeight = Math.max(layer.nodes.length * NODE_VERTICAL_GAP, NODE_VERTICAL_GAP);
+    const startY = (viewHeight - layerHeight) / 2 + 20;
+    layer.x = x;
 
     layer.nodes.forEach((node, nodeIndex) => {
-      const y = startY + nodeIndex * 88;
+      const y = startY + nodeIndex * NODE_VERTICAL_GAP;
       const positionedNode = {
         ...node,
         x,
@@ -195,10 +326,9 @@ function clearSvg(svg) {
 }
 
 function drawLayerTitles(svg, layout) {
-  layout.groups.forEach((group, index) => {
-    const x = 150 + index * 260;
+  layout.groups.forEach((group) => {
     const title = createSvgElement('text');
-    title.setAttribute('x', String(x));
+    title.setAttribute('x', String(group.x || 0));
     title.setAttribute('y', '34');
     title.setAttribute('class', 'layer-title');
     title.textContent = group.title;

@@ -31,6 +31,7 @@ test('GET /knowledge-graph.html returns the knowledge graph visualization page',
   assert.equal(response.statusCode, 200);
   assert.match(response.text, /知识图谱可视化/);
   assert.match(response.text, /data-role="graph-canvas"/);
+  assert.match(response.text, /不依赖 Neo4j 运行时/);
 });
 
 test('GET /knowledge-graph-layered.html returns the layered graph visualization page', async () => {
@@ -40,6 +41,7 @@ test('GET /knowledge-graph-layered.html returns the layered graph visualization 
   assert.equal(response.statusCode, 200);
   assert.match(response.text, /知识图谱可视化（分层拓扑方案）/);
   assert.match(response.text, /data-role="layered-graph-svg"/);
+  assert.match(response.text, /不依赖 Neo4j 运行时/);
 });
 
 test('GET /health returns ok payload', async () => {
