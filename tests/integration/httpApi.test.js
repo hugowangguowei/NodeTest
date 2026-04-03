@@ -196,6 +196,39 @@ test('POST /api/factory/publish updates lifecycle for draft objects and can be q
   assert.equal(catalogResponse.body.items[0].lifecycle_status, 'published');
 });
 
+test('GET /api/visualization/knowledge-graph returns graph projection payload', async () => {
+  const app = createApp();
+  const response = await request(app).get('/api/visualization/knowledge-graph');
+
+  assert.equal(response.statusCode, 200);
+  assert.ok(Array.isArray(response.body.nodes));
+  assert.ok(Array.isArray(response.body.edges));
+  assert.ok(response.body.nodes.length > 0);
+  assert.ok(response.body.edges.length > 0);
+  assert.ok(response.body.nodes.some((node) => node.id === 'entity-role-002'));
+  assert.ok(response.body.edges.some((edge) => edge.edge_type === 'participates_in'));
+});
+
+test('GET /api/visualization/knowledge-graph respects include_audit and state_domain_ref filters', async () => {
+  const app = createApp();
+  const response = await request(app).get(
+    '/api/visualization/knowledge-graph?include_audit=false&state_domain_ref=state-domain-001'
+  );
+
+  assert.equal(response.statusCode, 200);
+  assert.ok(response.body.nodes.length > 0);
+  assert.ok(response.body.nodes.every((node) => node.node_type !== 'operation_log'));
+  assert.ok(response.body.nodes.every((node) => node.node_type !== 'state_snapshot'));
+  assert.ok(
+    response.body.nodes.every(
+      (node) =>
+        node.id === 'repo-001' ||
+        node.id === 'state-domain-001' ||
+        node.state_domain_ref === 'state-domain-001'
+    )
+  );
+});
+
 test('app.js exports a start entrypoint', () => {
   const appEntry = require('../../app');
 

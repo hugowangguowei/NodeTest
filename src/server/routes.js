@@ -17,6 +17,7 @@ const {
   executeAssemblyPlan,
   publishFactoryObjects
 } = require('../repository/factoryOrchestrationStore');
+const { buildKnowledgeGraphProjection } = require('../repository/knowledgeGraphProjection');
 
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
@@ -188,6 +189,18 @@ function registerRoutes(app) {
 
   app.get('/api/repository/writeback/snapshot', (_req, res) => {
     return res.json(getWritebackSnapshot());
+  });
+
+  app.get('/api/visualization/knowledge-graph', (req, res) => {
+    const projection = buildKnowledgeGraphProjection({
+      include_audit: req.query.include_audit,
+      state_domain_ref: isNonEmptyString(req.query.state_domain_ref)
+        ? String(req.query.state_domain_ref)
+        : undefined,
+      node_type: isNonEmptyString(req.query.node_type) ? String(req.query.node_type) : undefined
+    });
+
+    return res.json(projection);
   });
 }
 

@@ -1,0 +1,17 @@
+{
+  "name": "knowledge-visualizer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Independent Neo4j visualizer tool for knowledge repository model",
+  "type": "commonjs",
+  "scripts": {
+    "neo4j:up": "docker compose up -d",
+    "neo4j:down": "docker compose down",
+    "import:sample": "node scripts/import-sample-to-neo4j.js",
+    "import:clear": "node scripts/import-sample-to-neo4j.js --clear-only",
+    "query:hints": "node scripts/print-query-hints.js"
+  },
+  "dependencies": {
+    "neo4j-driver": "^5.27.0"
+  }
+}
