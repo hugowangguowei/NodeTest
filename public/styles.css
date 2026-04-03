@@ -54,6 +54,21 @@ body {
   color: var(--text-muted);
 }
 
+.hero-actions {
+  margin-top: 14px;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 109, 122, 0.32);
+  background: var(--accent-soft);
+  color: var(--text-main);
+  text-decoration: none;
+}
+
 .layout {
   display: grid;
   grid-template-columns: 1.08fr 1.02fr 1.18fr;

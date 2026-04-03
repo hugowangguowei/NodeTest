@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>知识图谱可视化</title>
+    <link rel="stylesheet" href="/knowledge-graph.css" />
+  </head>
+  <body>
+    <div class="kg-page">
+      <header class="kg-header">
+        <div>
+          <h1>知识图谱可视化</h1>
+          <p>交互说明：滚轮缩放，拖动画布平移，拖拽节点调整布局，点击节点查看详情。</p>
+        </div>
+        <div class="kg-header-actions">
+          <a class="kg-link-button" href="/">返回软件工厂</a>
+          <button type="button" class="kg-link-button is-accent" data-role="refresh-button">
+            刷新数据
+          </button>
+        </div>
+      </header>
+
+      <section class="kg-controls">
+        <label class="kg-control">
+          <input type="checkbox" data-role="include-audit" checked />
+          <span>包含审计对象</span>
+        </label>
+        <label class="kg-control">
+          <span>状态域</span>
+          <select data-role="state-domain-select">
+            <option value="">全部</option>
+          </select>
+        </label>
+        <label class="kg-control">
+          <span>节点类型</span>
+          <select data-role="node-type-select">
+            <option value="">全部</option>
+          </select>
+        </label>
+        <span class="kg-summary" data-role="graph-summary">正在加载图谱...</span>
+      </section>
+
+      <main class="kg-main">
+        <section class="kg-canvas-panel">
+          <canvas data-role="graph-canvas" aria-label="知识图谱画布"></canvas>
+          <div class="kg-error" data-role="error-banner" hidden></div>
+        </section>
+
+        <aside class="kg-detail-panel">
+          <h2>节点详情</h2>
+          <pre data-role="node-detail">点击图中的节点查看详情。</pre>
+          <h2>图谱统计</h2>
+          <pre data-role="graph-stats">正在加载统计...</pre>
+        </aside>
+      </main>
+    </div>
+
+    <script src="/knowledge-graph.js"></script>
+  </body>
+</html>

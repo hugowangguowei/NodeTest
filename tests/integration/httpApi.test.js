@@ -24,6 +24,15 @@ test('GET / returns the scenario builder shell', async () => {
   assert.match(response.text, /<button[^>]*>执行统一回写<\/button>/);
 });
 
+test('GET /knowledge-graph.html returns the knowledge graph visualization page', async () => {
+  const app = createApp();
+  const response = await request(app).get('/knowledge-graph.html');
+
+  assert.equal(response.statusCode, 200);
+  assert.match(response.text, /知识图谱可视化/);
+  assert.match(response.text, /data-role="graph-canvas"/);
+});
+
 test('GET /health returns ok payload', async () => {
   const app = createApp();
   const response = await request(app).get('/health');
