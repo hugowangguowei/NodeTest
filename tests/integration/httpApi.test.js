@@ -33,6 +33,15 @@ test('GET /knowledge-graph.html returns the knowledge graph visualization page',
   assert.match(response.text, /data-role="graph-canvas"/);
 });
 
+test('GET /knowledge-graph-layered.html returns the layered graph visualization page', async () => {
+  const app = createApp();
+  const response = await request(app).get('/knowledge-graph-layered.html');
+
+  assert.equal(response.statusCode, 200);
+  assert.match(response.text, /知识图谱可视化（分层拓扑方案）/);
+  assert.match(response.text, /data-role="layered-graph-svg"/);
+});
+
 test('GET /health returns ok payload', async () => {
   const app = createApp();
   const response = await request(app).get('/health');

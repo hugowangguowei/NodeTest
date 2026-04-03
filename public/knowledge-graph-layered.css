@@ -1,0 +1,231 @@
+:root {
+  color-scheme: light;
+  --bg: linear-gradient(180deg, #f1f6f9 0%, #e8efe4 100%);
+  --panel: rgba(255, 255, 255, 0.9);
+  --border: rgba(23, 49, 77, 0.17);
+  --text: #132535;
+  --muted: #4f6479;
+  --accent: #1f6f8b;
+  --shadow: 0 16px 34px rgba(31, 51, 72, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.layered-page {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 24px 20px 28px;
+}
+
+.layered-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.layered-header h1 {
+  margin: 0 0 10px;
+  font-size: 30px;
+}
+
+.layered-header p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.layered-actions {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(23, 49, 77, 0.23);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.link-button.is-accent {
+  border-color: rgba(31, 111, 139, 0.4);
+  background: rgba(31, 111, 139, 0.14);
+}
+
+.layered-controls {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.control-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.control-item select {
+  min-width: 160px;
+  padding: 8px 10px;
+  border: 1px solid rgba(23, 49, 77, 0.2);
+  border-radius: 10px;
+  font: inherit;
+}
+
+.summary {
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.layered-main {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 12px;
+}
+
+.graph-panel,
+.detail-panel {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.graph-panel {
+  position: relative;
+  padding: 12px;
+}
+
+.graph-scroll {
+  width: 100%;
+  min-height: 680px;
+  max-height: 760px;
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(23, 49, 77, 0.12);
+  background:
+    linear-gradient(180deg, rgba(244, 249, 253, 0.98), rgba(240, 247, 242, 0.98)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(39, 79, 116, 0.06) 0,
+      rgba(39, 79, 116, 0.06) 1px,
+      transparent 1px,
+      transparent 120px
+    );
+}
+
+.graph-scroll svg {
+  display: block;
+}
+
+.edge-line {
+  stroke: rgba(34, 58, 82, 0.36);
+  stroke-width: 1.2;
+  fill: none;
+}
+
+.node-shape {
+  stroke: rgba(17, 35, 50, 0.45);
+  stroke-width: 1.2;
+  cursor: pointer;
+}
+
+.node-shape.is-selected {
+  stroke: #102132;
+  stroke-width: 3;
+}
+
+.node-label {
+  font-size: 12px;
+  text-anchor: middle;
+  fill: #12283a;
+  pointer-events: none;
+}
+
+.layer-title {
+  font-size: 13px;
+  fill: rgba(18, 40, 58, 0.7);
+  font-weight: 700;
+}
+
+.error-banner {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 43, 43, 0.25);
+  background: rgba(189, 65, 65, 0.11);
+  color: #7e1f1f;
+}
+
+.detail-panel {
+  padding: 14px;
+}
+
+.detail-panel h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.detail-panel pre {
+  margin: 0 0 12px;
+  min-height: 240px;
+  max-height: 330px;
+  overflow: auto;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(23, 49, 77, 0.14);
+  background: rgba(16, 33, 50, 0.97);
+  color: #dce9f6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.58;
+}
+
+@media (max-width: 1120px) {
+  .layered-main {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    margin-left: 0;
+  }
+
+  .layered-header {
+    flex-direction: column;
+  }
+}

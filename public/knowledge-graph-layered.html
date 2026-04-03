@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>知识图谱可视化（分层拓扑方案）</title>
+    <link rel="stylesheet" href="/knowledge-graph-layered.css" />
+  </head>
+  <body>
+    <div class="layered-page">
+      <header class="layered-header">
+        <div>
+          <h1>知识图谱可视化（分层拓扑方案）</h1>
+          <p>按对象层级自动排布图谱，强调审批链路与对象关系路径，便于结构核查。</p>
+        </div>
+        <div class="layered-actions">
+          <a class="link-button" href="/">返回软件工厂</a>
+          <a class="link-button" href="/knowledge-graph.html">切换到力导向方案</a>
+          <button type="button" class="link-button is-accent" data-role="refresh-button">刷新</button>
+        </div>
+      </header>
+
+      <section class="layered-controls">
+        <label class="control-item">
+          <input type="checkbox" data-role="include-audit" checked />
+          <span>包含审计对象</span>
+        </label>
+        <label class="control-item">
+          <span>状态域</span>
+          <select data-role="state-domain-select">
+            <option value="">全部状态域</option>
+          </select>
+        </label>
+        <label class="control-item">
+          <span>节点类型</span>
+          <select data-role="node-type-select">
+            <option value="">全部节点类型</option>
+          </select>
+        </label>
+        <span class="summary" data-role="graph-summary">正在加载...</span>
+      </section>
+
+      <main class="layered-main">
+        <section class="graph-panel">
+          <div class="graph-scroll" data-role="graph-scroll">
+            <svg data-role="layered-graph-svg" aria-label="分层图谱"></svg>
+          </div>
+          <div class="error-banner" data-role="error-banner" hidden></div>
+        </section>
+
+        <aside class="detail-panel">
+          <h2>节点详情</h2>
+          <pre data-role="node-detail">点击节点查看详细信息。</pre>
+          <h2>图谱统计</h2>
+          <pre data-role="graph-stats">正在加载统计...</pre>
+        </aside>
+      </main>
+    </div>
+
+    <script src="/knowledge-graph-layered.js"></script>
+  </body>
+</html>
