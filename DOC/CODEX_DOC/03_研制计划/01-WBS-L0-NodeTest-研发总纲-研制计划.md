@@ -46,8 +46,8 @@ Tracker：
 Tracker：
 
 - [Issue #5 - P2 阶段父节点](https://github.com/hugowangguowei/NodeTest/issues/5)
-- [Issue #9 - P2.1 知识仓库状态域与对象模型基线](https://github.com/hugowangguowei/NodeTest/issues/9)
-- [Issue #10 - P2.2 软件工厂异构对象编排契约](https://github.com/hugowangguowei/NodeTest/issues/10)
+- [Issue #9 - P2.1 知识仓库和对象模型](https://github.com/hugowangguowei/NodeTest/issues/9)
+- [Issue #10 - P2.2 软件工厂异构数据规范](https://github.com/hugowangguowei/NodeTest/issues/10)
 - [Issue #11 - P2.3 仓库统一更新链路与验证](https://github.com/hugowangguowei/NodeTest/issues/11)
 
 ### P3 定制软件定义态增强
