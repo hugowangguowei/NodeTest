@@ -22,11 +22,29 @@
           "description": "承载实体、行为、事件、关系、流程、规则",
           "object_refs": [
             "entity-001",
+            "entity-role-001",
+            "entity-role-002",
+            "entity-role-003",
+            "entity-role-004",
+            "entity-role-005",
             "behavior-001",
+            "behavior-002",
+            "behavior-003",
+            "behavior-004",
             "event-001",
+            "event-002",
+            "event-003",
+            "event-004",
             "relation-001",
+            "relation-002",
+            "relation-003",
+            "relation-004",
+            "relation-005",
             "business-flow-001",
-            "rule-001"
+            "rule-001",
+            "rule-002",
+            "rule-003",
+            "rule-004"
           ],
           "update_policy": "versioned_upsert"
         },
@@ -70,6 +88,66 @@
               "source-doc-001"
             ],
             "status": "active"
+          },
+          {
+            "id": "entity-role-001",
+            "repository_ref": "repo-001",
+            "name": "董事长",
+            "entity_type": "person_role",
+            "attribute_schema_ref": "attr-schema-role-001",
+            "state_domain_ref": "state-domain-001",
+            "source_refs": [
+              "source-doc-organization-001"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "entity-role-002",
+            "repository_ref": "repo-001",
+            "name": "总经理",
+            "entity_type": "person_role",
+            "attribute_schema_ref": "attr-schema-role-001",
+            "state_domain_ref": "state-domain-001",
+            "source_refs": [
+              "source-doc-organization-001"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "entity-role-003",
+            "repository_ref": "repo-001",
+            "name": "财务主管",
+            "entity_type": "person_role",
+            "attribute_schema_ref": "attr-schema-role-001",
+            "state_domain_ref": "state-domain-001",
+            "source_refs": [
+              "source-doc-organization-001"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "entity-role-004",
+            "repository_ref": "repo-001",
+            "name": "合规主管",
+            "entity_type": "person_role",
+            "attribute_schema_ref": "attr-schema-role-001",
+            "state_domain_ref": "state-domain-001",
+            "source_refs": [
+              "source-doc-organization-001"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "entity-role-005",
+            "repository_ref": "repo-001",
+            "name": "执行人员",
+            "entity_type": "person_role",
+            "attribute_schema_ref": "attr-schema-role-001",
+            "state_domain_ref": "state-domain-001",
+            "source_refs": [
+              "source-doc-organization-001"
+            ],
+            "status": "active"
           }
         ],
         "behaviors": [
@@ -79,13 +157,61 @@
             "name": "提交申请",
             "behavior_type": "action",
             "actor_refs": [
-              "entity-actor-001"
+              "entity-role-005"
             ],
             "target_refs": [
               "entity-001"
             ],
             "rule_refs": [
               "rule-001"
+            ],
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "behavior-002",
+            "repository_ref": "repo-001",
+            "name": "合规审核",
+            "behavior_type": "review",
+            "actor_refs": [
+              "entity-role-004"
+            ],
+            "target_refs": [
+              "entity-001"
+            ],
+            "rule_refs": [
+              "rule-002"
+            ],
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "behavior-003",
+            "repository_ref": "repo-001",
+            "name": "财务审核",
+            "behavior_type": "review",
+            "actor_refs": [
+              "entity-role-003"
+            ],
+            "target_refs": [
+              "entity-001"
+            ],
+            "rule_refs": [
+              "rule-003"
+            ],
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "behavior-004",
+            "repository_ref": "repo-001",
+            "name": "最终审批",
+            "behavior_type": "approval",
+            "actor_refs": [
+              "entity-role-002"
+            ],
+            "target_refs": [
+              "entity-001"
+            ],
+            "rule_refs": [
+              "rule-004"
             ],
             "state_domain_ref": "state-domain-001"
           }
@@ -101,6 +227,39 @@
               "state-change-001"
             ],
             "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "event-002",
+            "repository_ref": "repo-001",
+            "name": "合规审核已完成",
+            "event_type": "business_event",
+            "trigger_behavior_ref": "behavior-002",
+            "state_change_refs": [
+              "state-change-002"
+            ],
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "event-003",
+            "repository_ref": "repo-001",
+            "name": "财务审核已完成",
+            "event_type": "business_event",
+            "trigger_behavior_ref": "behavior-003",
+            "state_change_refs": [
+              "state-change-003"
+            ],
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "event-004",
+            "repository_ref": "repo-001",
+            "name": "总经理已审批",
+            "event_type": "business_event",
+            "trigger_behavior_ref": "behavior-004",
+            "state_change_refs": [
+              "state-change-004"
+            ],
+            "state_domain_ref": "state-domain-001"
           }
         ],
         "relationships": [
@@ -110,7 +269,53 @@
             "name": "事项归属部门",
             "relationship_type": "belongs_to",
             "from_ref": "entity-001",
-            "to_ref": "entity-group-001",
+            "to_ref": "entity-role-005",
+            "rule_refs": [],
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "relation-002",
+            "repository_ref": "repo-001",
+            "name": "执行到合规审核流转",
+            "relationship_type": "handover_to",
+            "from_ref": "entity-role-005",
+            "to_ref": "entity-role-004",
+            "rule_refs": [
+              "rule-002"
+            ],
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "relation-003",
+            "repository_ref": "repo-001",
+            "name": "合规到财务审核流转",
+            "relationship_type": "handover_to",
+            "from_ref": "entity-role-004",
+            "to_ref": "entity-role-003",
+            "rule_refs": [
+              "rule-003"
+            ],
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "relation-004",
+            "repository_ref": "repo-001",
+            "name": "财务到总经理审批流转",
+            "relationship_type": "handover_to",
+            "from_ref": "entity-role-003",
+            "to_ref": "entity-role-002",
+            "rule_refs": [
+              "rule-004"
+            ],
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "relation-005",
+            "repository_ref": "repo-001",
+            "name": "董事长治理监督关系",
+            "relationship_type": "governs",
+            "from_ref": "entity-role-001",
+            "to_ref": "entity-001",
             "rule_refs": [],
             "state_domain_ref": "state-domain-001"
           }
@@ -123,10 +328,19 @@
             "flow_type": "approval_flow",
             "node_refs": [
               "flow-node-001",
-              "flow-node-002"
+              "flow-node-002",
+              "flow-node-003",
+              "flow-node-004"
             ],
             "entry_rule_refs": [],
             "exit_rule_refs": [],
+            "participant_role_refs": [
+              "entity-role-005",
+              "entity-role-004",
+              "entity-role-003",
+              "entity-role-002",
+              "entity-role-001"
+            ],
             "state_domain_ref": "state-domain-001"
           }
         ],
@@ -141,6 +355,39 @@
             ],
             "expression": "materials.complete == true",
             "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "rule-002",
+            "repository_ref": "repo-001",
+            "name": "合规审查通过规则",
+            "rule_type": "gate",
+            "scope_refs": [
+              "flow-node-002"
+            ],
+            "expression": "compliance.result == 'pass'",
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "rule-003",
+            "repository_ref": "repo-001",
+            "name": "财务审查通过规则",
+            "rule_type": "gate",
+            "scope_refs": [
+              "flow-node-003"
+            ],
+            "expression": "finance.result == 'pass'",
+            "state_domain_ref": "state-domain-001"
+          },
+          {
+            "id": "rule-004",
+            "repository_ref": "repo-001",
+            "name": "总经理审批通过规则",
+            "rule_type": "gate",
+            "scope_refs": [
+              "flow-node-004"
+            ],
+            "expression": "gm.approval == true",
+            "state_domain_ref": "state-domain-001"
           }
         ]
       },
@@ -150,7 +397,7 @@
             "id": "flow-inst-001",
             "repository_ref": "repo-001",
             "flow_ref": "business-flow-001",
-            "current_node_ref": "flow-node-001",
+            "current_node_ref": "flow-node-003",
             "status": "running",
             "started_at": "2026-04-02T00:00:00Z",
             "state_domain_ref": "state-domain-003"
@@ -160,7 +407,7 @@
           {
             "id": "node-inst-001",
             "repository_ref": "repo-001",
-            "node_ref": "flow-node-001",
+            "node_ref": "flow-node-002",
             "flow_instance_ref": "flow-inst-001",
             "status": "completed",
             "completed_at": "2026-04-02T00:10:00Z",
@@ -174,7 +421,7 @@
             "id": "oplog-001",
             "repository_ref": "repo-001",
             "operation_type": "state_update",
-            "operator_ref": "entity-actor-001",
+            "operator_ref": "entity-role-003",
             "target_ref": "flow-inst-001",
             "before_snapshot_ref": "snapshot-001",
             "after_snapshot_ref": "snapshot-002",
@@ -199,12 +446,34 @@
     "indexes": {
       "id_index": {
         "entity-001": "object_catalog.semantic_objects.entities",
+        "entity-role-001": "object_catalog.semantic_objects.entities",
+        "entity-role-002": "object_catalog.semantic_objects.entities",
+        "entity-role-003": "object_catalog.semantic_objects.entities",
+        "entity-role-004": "object_catalog.semantic_objects.entities",
+        "entity-role-005": "object_catalog.semantic_objects.entities",
+        "behavior-001": "object_catalog.semantic_objects.behaviors",
+        "behavior-002": "object_catalog.semantic_objects.behaviors",
+        "behavior-003": "object_catalog.semantic_objects.behaviors",
+        "behavior-004": "object_catalog.semantic_objects.behaviors",
         "business-flow-001": "object_catalog.semantic_objects.business_flows",
         "flow-inst-001": "object_catalog.runtime_objects.flow_instances"
       },
       "type_index": {
         "entity": [
           "entity-001"
+        ],
+        "role_entity": [
+          "entity-role-001",
+          "entity-role-002",
+          "entity-role-003",
+          "entity-role-004",
+          "entity-role-005"
+        ],
+        "behavior": [
+          "behavior-001",
+          "behavior-002",
+          "behavior-003",
+          "behavior-004"
         ],
         "flow_instance": [
           "flow-inst-001"
@@ -213,11 +482,29 @@
       "domain_index": {
         "state-domain-001": [
           "entity-001",
+          "entity-role-001",
+          "entity-role-002",
+          "entity-role-003",
+          "entity-role-004",
+          "entity-role-005",
           "behavior-001",
+          "behavior-002",
+          "behavior-003",
+          "behavior-004",
           "event-001",
+          "event-002",
+          "event-003",
+          "event-004",
           "relation-001",
+          "relation-002",
+          "relation-003",
+          "relation-004",
+          "relation-005",
           "business-flow-001",
-          "rule-001"
+          "rule-001",
+          "rule-002",
+          "rule-003",
+          "rule-004"
         ],
         "state-domain-003": [
           "flow-inst-001",
